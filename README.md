@@ -1,6 +1,5 @@
 Swift-SpriteKit-Analog-Stick
 ============================
-<img scr="https://dl.dropboxusercontent.com/u/25298147/IMG_2251.PNG" />
 <h2>How to use:</h2>
 <ol>
 <li>Import "AnalogStick" folder to your project</li>
@@ -9,6 +8,7 @@ Swift-SpriteKit-Analog-Stick
 ============================
 <h3>Description</h3>
 <p>Virtual alternative analog joystick </p>
+<img src="https://dl.dropboxusercontent.com/u/25298147/IMG_2251.PNG" />
 ============================
 <h3>Initialization</h3>
 <p>
