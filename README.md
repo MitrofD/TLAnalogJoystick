@@ -1,6 +1,6 @@
 Swift-SpriteKit-Analog-Stick
 ============================
-<img scr="https://dl.dropboxusercontent.com/u/25298147/IMG_2251.PNG" />
+<img scr="https://raw.githubusercontent.com/TheSneakyNarwhal/SpriteKit-Joystick/master/pic.png" />
 <h2>How to use:</h2>
 <ol>
 <li>Import "AnalogStick" folder to your project</li>
