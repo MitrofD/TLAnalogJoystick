@@ -15,14 +15,14 @@ class AnalogStick: SKNode {
     var velocityLoop: CADisplayLink?
     let thumbNode: SKSpriteNode, bgNode: SKSpriteNode
     func setThumbImage(image: UIImage?, sizeToFit: Bool) {
-        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSThumbImg")
+        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSThumbImg")!
         self.thumbNode.texture = SKTexture(image: tImage)
         if sizeToFit {
             self.thumbNodeDiametr = min(tImage.size.width, tImage.size.height)
         }
     }
     func setBgImage(image: UIImage?, sizeToFit: Bool) {
-        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSBgImg")
+        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSBgImg")!
         self.bgNode.texture = SKTexture(image: tImage)
         if sizeToFit {
             self.bgNodeDiametr = min(tImage.size.width, tImage.size.height)

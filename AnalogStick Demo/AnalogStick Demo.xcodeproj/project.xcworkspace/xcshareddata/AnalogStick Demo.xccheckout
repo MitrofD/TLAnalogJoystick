@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A96C4305-7BAA-4982-8CDB-E22434C7EBD5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AnalogStick Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CAD2E08F621A4108E41C0E5E3AFD4A73EFA08980</key>
+		<string>https://github.com/MitrophD/Swift-SpriteKit-Analog-Stick.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AnalogStick Demo/AnalogStick Demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CAD2E08F621A4108E41C0E5E3AFD4A73EFA08980</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MitrophD/Swift-SpriteKit-Analog-Stick.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CAD2E08F621A4108E41C0E5E3AFD4A73EFA08980</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CAD2E08F621A4108E41C0E5E3AFD4A73EFA08980</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swift-SpriteKit-Analog-Stick</string>
+		</dict>
+	</array>
+</dict>
+</plist>
