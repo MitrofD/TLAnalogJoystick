@@ -47,10 +47,12 @@ class GameScene: SKScene, AnalogStickProtocol {
         self.addChild(appleNode)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
         super.touchesBegan(touches, withEvent: event)
-        if let touch = touches.anyObject() as? UITouch {
+        
+        if let touch = touches.first as? UITouch {
+            
             appleNode?.position = touch.locationInNode(self)
         }
     }

@@ -87,7 +87,7 @@ class AnalogStick: SKNode {
         self.thumbNode.runAction(easeOut)
     }
     // touch begin
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
         for touch: AnyObject in touches {
             let location: CGPoint = touch.locationInNode(self)
@@ -98,7 +98,7 @@ class AnalogStick: SKNode {
         }
     }
     // touch move
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event);
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self);
@@ -124,11 +124,11 @@ class AnalogStick: SKNode {
         }
     }
     // touch end
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         reset()
     }
     // touch cancel
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent!) {
         reset()
     }
 }
