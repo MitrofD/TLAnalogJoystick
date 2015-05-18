@@ -12,8 +12,10 @@ import SpriteKit
 }
 
 class AnalogStick: SKNode {
+    
     var velocityLoop: CADisplayLink?
     let thumbNode: SKSpriteNode, bgNode: SKSpriteNode
+    
     func setThumbImage(image: UIImage?, sizeToFit: Bool) {
         var tImage: UIImage = image != nil ? image! : UIImage(named: "aSThumbImg")!
         self.thumbNode.texture = SKTexture(image: tImage)
@@ -36,11 +38,11 @@ class AnalogStick: SKNode {
         get { return self.bgNode.size.width }
         set { self.thumbNode.size = CGSizeMake(newValue, newValue) }
     }
-    var delagate: AnalogStickProtocol? {
+    var delegate: AnalogStickProtocol? {
         didSet {
             velocityLoop?.invalidate()
             velocityLoop = nil
-            if delagate != nil {
+            if delegate != nil {
                 velocityLoop = CADisplayLink(target: self, selector: Selector("update"))
                 velocityLoop?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
             }
@@ -48,7 +50,7 @@ class AnalogStick: SKNode {
     }
     func update() {
         if isTracking {
-           delagate?.moveAnalogStick(self, velocity: self.velocity, angularVelocity: self.angularVelocity)
+           delegate?.moveAnalogStick(self, velocity: self.velocity, angularVelocity: self.angularVelocity)
         }
     }
     let kThumbSpringBackDuration: NSTimeInterval = 0.15 // action duration

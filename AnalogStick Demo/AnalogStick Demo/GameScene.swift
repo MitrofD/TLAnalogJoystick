@@ -9,7 +9,9 @@
 import SpriteKit
 
 class GameScene: SKScene, AnalogStickProtocol {
+    
     var appleNode: SKSpriteNode?
+    
     let moveAnalogStick: AnalogStick = AnalogStick()
     let rotateAnalogStick: AnalogStick = AnalogStick()
     override func didMoveToView(view: SKView) {
