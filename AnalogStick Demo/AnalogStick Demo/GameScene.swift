@@ -22,12 +22,12 @@ class GameScene: SKScene, AnalogStickProtocol {
         moveAnalogStick.bgNodeDiametr = bgDiametr
         moveAnalogStick.thumbNodeDiametr = thumbDiametr
         moveAnalogStick.position = CGPointMake(joysticksRadius + 15, joysticksRadius + 15)
-        moveAnalogStick.delagate = self
+        moveAnalogStick.delegate = self
         self.addChild(moveAnalogStick)
         rotateAnalogStick.bgNodeDiametr = bgDiametr
         rotateAnalogStick.thumbNodeDiametr = thumbDiametr
         rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - joysticksRadius - 15, joysticksRadius + 15)
-        rotateAnalogStick.delagate = self
+        rotateAnalogStick.delegate = self
         self.addChild(rotateAnalogStick)
         // apple
         appleNode = SKSpriteNode(imageNamed: "apple")
