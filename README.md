@@ -1,6 +1,6 @@
 Swift-SpriteKit-Analog-Stick
 ============================
-<h2 style="color: #432498;">How to use:</h2>
+<h2>How to use:</h2>
 <ol>
 <li>Import "AnalogStick" folder to your project</li>
 <li>Use</li>
@@ -10,7 +10,7 @@ Swift-SpriteKit-Analog-Stick
 <p>Virtual analog joystick</p>
 <img src="https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif" />
 ============================
-<h2 style="color: #432498;">Initializations:</h2>
+<h2>Initializations:</h2>
 <p>
 UIImage bgImage = UIImage(named: "bgImage")<br/>
 UIImage thumbImage = UIImage(named: "thumbImage")
@@ -34,7 +34,7 @@ analogstick.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self
 self.addChild(analogstick)
 </p>
 ============================
-<h3 style="color: #432498;">AnalogStickProtocol</h3>
+<h3>AnalogStickProtocol</h3>
 <p>
 @objc protocol AnalogStickProtocol {
     func moveAnalogStick(analogStick: AnalogStick, velocity: CGPoint, angularVelocity: Float)
