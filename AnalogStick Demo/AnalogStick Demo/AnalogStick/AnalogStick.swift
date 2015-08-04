@@ -86,7 +86,11 @@ public class AnalogStick: SKNode {
     }
     
     var diametr: CGFloat {
+<<<<<<< HEAD
         
+=======
+    
+>>>>>>> origin/master
         get { return max(substrateNode.size.width, substrateNode.size.height) }
         
         set {

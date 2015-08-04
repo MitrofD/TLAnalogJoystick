@@ -20,7 +20,11 @@ class GameScene: SKScene {
     let setJoystickSubstrateImageBtn = SKLabelNode()
     let joystickStickColorBtn = SKLabelNode(text: "Sticks Random Color")
     let joystickSubstrateColorBtn = SKLabelNode(text: "Substrates Random Color")
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/master
     private var _isSetJoystickStickImage = false, _isSetJoystickSubstrateImage = false
     
     var isSetJoystickStickImage: Bool {
@@ -86,7 +90,11 @@ class GameScene: SKScene {
         
         rotateAnalogStick.moveHandler = { analogStick in
             
+<<<<<<< HEAD
             self.appleNode?.zRotation = analogStick.data.angular
+=======
+           self.appleNode?.zRotation = analogStick.data.angular
+>>>>>>> origin/master
         }
         
         addChild(rotateAnalogStick)
@@ -153,7 +161,11 @@ class GameScene: SKScene {
     }
     
     func appendAppleToPoint(position: CGPoint) -> SKSpriteNode {
+<<<<<<< HEAD
         
+=======
+            
+>>>>>>> origin/master
         let appleImage = UIImage(named: "apple")
         
         precondition(appleImage != nil, "Please set right image")
