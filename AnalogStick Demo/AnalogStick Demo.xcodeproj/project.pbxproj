@@ -25,19 +25,6 @@
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
 		8C2C1F9119DD76AA00510F35 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */; };
-<<<<<<< HEAD
-=======
-		8CD1BFF61B6E5C0B00C6D2E8 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */; };
-		8CD1BFF71B6E5C0B00C6D2E8 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */; };
-		8CD6E5C01B6ECBA700D3FC11 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */; };
-		8CD6E5C11B6ECBA700D3FC11 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BE1B6ECBA700D3FC11 /* minus.png */; };
-		8CD6E5C21B6ECBA700D3FC11 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BF1B6ECBA700D3FC11 /* plus.png */; };
-		8CD6E5C41B6ED0F800D3FC11 /* minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */; };
-		8CD6E5C71B6EF6EB00D3FC11 /* jSubstrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */; };
-		8CD6E5C81B6EF6EB00D3FC11 /* jSubstrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */; };
-		8CD6E5CB1B6EF9DE00D3FC11 /* jStick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */; };
-		8CD6E5CC1B6EF9DE00D3FC11 /* jStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */; };
->>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,19 +60,6 @@
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
 		8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-		8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
-		8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
-		8CD6E5BE1B6ECBA700D3FC11 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
-		8CD6E5BF1B6ECBA700D3FC11 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
-		8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus@2x.png"; sourceTree = "<group>"; };
-		8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jSubstrate.png; sourceTree = "<group>"; };
-		8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jSubstrate@2x.png"; sourceTree = "<group>"; };
-		8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jStick@2x.png"; sourceTree = "<group>"; };
-		8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jStick.png; sourceTree = "<group>"; };
->>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,11 +133,7 @@
 		8C2C1F6519DD762300510F35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				8C073A941B70FC06005CE3AD /* images */,
-=======
-				8CD1BFF31B6E5BFE00C6D2E8 /* images */,
->>>>>>> origin/master
 				8C2C1F6619DD762300510F35 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,23 +162,6 @@
 				8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */,
 			);
 			path = AnalogStick;
-			sourceTree = "<group>";
-		};
-		8CD1BFF31B6E5BFE00C6D2E8 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */,
-				8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */,
-				8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */,
-				8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */,
-				8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */,
-				8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */,
-				8CD6E5BE1B6ECBA700D3FC11 /* minus.png */,
-				8CD6E5BF1B6ECBA700D3FC11 /* plus.png */,
-				8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */,
-				8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-<<<<<<< HEAD
 				LastUpgradeCheck = 0600;
-=======
-				LastUpgradeCheck = 0700;
->>>>>>> origin/master
 				ORGANIZATIONNAME = "Dmitriy Mitrophanskiy";
 				TargetAttributes = {
 					8C2C1F6119DD762300510F35 = {
@@ -296,7 +245,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				8C073AA31B70FC5A005CE3AD /* jSubstrate.png in Resources */,
 				8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */,
 				8C073AA41B70FC5A005CE3AD /* jSubstrate@2x.png in Resources */,
@@ -310,21 +258,6 @@
 				8C073AA61B70FC5A005CE3AD /* minus@2x.png in Resources */,
 				8C073AA11B70FC5A005CE3AD /* jStick.png in Resources */,
 				8C073AA71B70FC5A005CE3AD /* plus.png in Resources */,
-=======
-				8CD6E5C71B6EF6EB00D3FC11 /* jSubstrate.png in Resources */,
-				8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */,
-				8CD1BFF71B6E5C0B00C6D2E8 /* apple@2x.png in Resources */,
-				8CD6E5C01B6ECBA700D3FC11 /* plus@2x.png in Resources */,
-				8CD6E5C41B6ED0F800D3FC11 /* minus@2x.png in Resources */,
-				8CD6E5CC1B6EF9DE00D3FC11 /* jStick.png in Resources */,
-				8C2C1F7319DD762300510F35 /* Images.xcassets in Resources */,
-				8CD6E5C11B6ECBA700D3FC11 /* minus.png in Resources */,
-				8CD1BFF61B6E5C0B00C6D2E8 /* apple.png in Resources */,
-				8C2C1F7119DD762300510F35 /* Main.storyboard in Resources */,
-				8CD6E5C81B6EF6EB00D3FC11 /* jSubstrate@2x.png in Resources */,
-				8CD6E5CB1B6EF9DE00D3FC11 /* jStick@2x.png in Resources */,
-				8CD6E5C21B6ECBA700D3FC11 /* plus.png in Resources */,
->>>>>>> origin/master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +340,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -471,7 +403,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AnalogStick Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -482,7 +413,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AnalogStick Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -501,7 +431,6 @@
 				);
 				INFOPLIST_FILE = "AnalogStick DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnalogStick Demo.app/AnalogStick Demo";
 			};
@@ -517,7 +446,6 @@
 				);
 				INFOPLIST_FILE = "AnalogStick DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnalogStick Demo.app/AnalogStick Demo";
 			};
