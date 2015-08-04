@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C073A9F1B70FC5A005CE3AD /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A951B70FC5A005CE3AD /* apple.png */; };
+		8C073AA01B70FC5A005CE3AD /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A961B70FC5A005CE3AD /* apple@2x.png */; };
+		8C073AA11B70FC5A005CE3AD /* jStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A971B70FC5A005CE3AD /* jStick.png */; };
+		8C073AA21B70FC5A005CE3AD /* jStick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A981B70FC5A005CE3AD /* jStick@2x.png */; };
+		8C073AA31B70FC5A005CE3AD /* jSubstrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A991B70FC5A005CE3AD /* jSubstrate.png */; };
+		8C073AA41B70FC5A005CE3AD /* jSubstrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A9A1B70FC5A005CE3AD /* jSubstrate@2x.png */; };
+		8C073AA51B70FC5A005CE3AD /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A9B1B70FC5A005CE3AD /* minus.png */; };
+		8C073AA61B70FC5A005CE3AD /* minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A9C1B70FC5A005CE3AD /* minus@2x.png */; };
+		8C073AA71B70FC5A005CE3AD /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A9D1B70FC5A005CE3AD /* plus.png */; };
+		8C073AA81B70FC5A005CE3AD /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C073A9E1B70FC5A005CE3AD /* plus@2x.png */; };
 		8C2C1F6819DD762300510F35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F6719DD762300510F35 /* AppDelegate.swift */; };
 		8C2C1F6C19DD762300510F35 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F6B19DD762300510F35 /* GameScene.swift */; };
 		8C2C1F6E19DD762300510F35 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F6D19DD762300510F35 /* GameViewController.swift */; };
@@ -15,10 +25,6 @@
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
 		8C2C1F9119DD76AA00510F35 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */; };
-		8C2C1F9219DD76AA00510F35 /* aSBgImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */; };
-		8C2C1F9319DD76AA00510F35 /* aSThumbImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */; };
-		8C2C1F9419DD76AA00510F35 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8F19DD76AA00510F35 /* apple.png */; };
-		8C2C1F9519DD76AA00510F35 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F9019DD76AA00510F35 /* apple@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C073A951B70FC5A005CE3AD /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		8C073A961B70FC5A005CE3AD /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
+		8C073A971B70FC5A005CE3AD /* jStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jStick.png; sourceTree = "<group>"; };
+		8C073A981B70FC5A005CE3AD /* jStick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jStick@2x.png"; sourceTree = "<group>"; };
+		8C073A991B70FC5A005CE3AD /* jSubstrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jSubstrate.png; sourceTree = "<group>"; };
+		8C073A9A1B70FC5A005CE3AD /* jSubstrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jSubstrate@2x.png"; sourceTree = "<group>"; };
+		8C073A9B1B70FC5A005CE3AD /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		8C073A9C1B70FC5A005CE3AD /* minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus@2x.png"; sourceTree = "<group>"; };
+		8C073A9D1B70FC5A005CE3AD /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		8C073A9E1B70FC5A005CE3AD /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		8C2C1F6219DD762300510F35 /* AnalogStick Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnalogStick Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C1F6619DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F6719DD762300510F35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,10 +60,6 @@
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
 		8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
-		8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSBgImg.png; sourceTree = "<group>"; };
-		8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSThumbImg.png; sourceTree = "<group>"; };
-		8C2C1F8F19DD76AA00510F35 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		8C2C1F9019DD76AA00510F35 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C073A941B70FC06005CE3AD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8C073A951B70FC5A005CE3AD /* apple.png */,
+				8C073A961B70FC5A005CE3AD /* apple@2x.png */,
+				8C073A971B70FC5A005CE3AD /* jStick.png */,
+				8C073A981B70FC5A005CE3AD /* jStick@2x.png */,
+				8C073A991B70FC5A005CE3AD /* jSubstrate.png */,
+				8C073A9A1B70FC5A005CE3AD /* jSubstrate@2x.png */,
+				8C073A9B1B70FC5A005CE3AD /* minus.png */,
+				8C073A9C1B70FC5A005CE3AD /* minus@2x.png */,
+				8C073A9D1B70FC5A005CE3AD /* plus.png */,
+				8C073A9E1B70FC5A005CE3AD /* plus@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		8C2C1F5919DD762300510F35 = {
 			isa = PBXGroup;
 			children = (
@@ -90,8 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				8C2C1F8B19DD76AA00510F35 /* AnalogStick */,
-				8C2C1F8F19DD76AA00510F35 /* apple.png */,
-				8C2C1F9019DD76AA00510F35 /* apple@2x.png */,
 				8C2C1F6719DD762300510F35 /* AppDelegate.swift */,
 				8C2C1F6B19DD762300510F35 /* GameScene.swift */,
 				8C2C1F6D19DD762300510F35 /* GameViewController.swift */,
@@ -106,6 +133,7 @@
 		8C2C1F6519DD762300510F35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C073A941B70FC06005CE3AD /* images */,
 				8C2C1F6619DD762300510F35 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -132,8 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */,
-				8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */,
-				8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */,
 			);
 			path = AnalogStick;
 			sourceTree = "<group>";
@@ -182,6 +208,7 @@
 		8C2C1F5A19DD762300510F35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Dmitriy Mitrophanskiy";
 				TargetAttributes = {
@@ -218,13 +245,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C073AA31B70FC5A005CE3AD /* jSubstrate.png in Resources */,
 				8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */,
+				8C073AA41B70FC5A005CE3AD /* jSubstrate@2x.png in Resources */,
+				8C073AA01B70FC5A005CE3AD /* apple@2x.png in Resources */,
 				8C2C1F7319DD762300510F35 /* Images.xcassets in Resources */,
-				8C2C1F9319DD76AA00510F35 /* aSThumbImg.png in Resources */,
-				8C2C1F9519DD76AA00510F35 /* apple@2x.png in Resources */,
-				8C2C1F9419DD76AA00510F35 /* apple.png in Resources */,
-				8C2C1F9219DD76AA00510F35 /* aSBgImg.png in Resources */,
+				8C073A9F1B70FC5A005CE3AD /* apple.png in Resources */,
 				8C2C1F7119DD762300510F35 /* Main.storyboard in Resources */,
+				8C073AA81B70FC5A005CE3AD /* plus@2x.png in Resources */,
+				8C073AA21B70FC5A005CE3AD /* jStick@2x.png in Resources */,
+				8C073AA51B70FC5A005CE3AD /* minus.png in Resources */,
+				8C073AA61B70FC5A005CE3AD /* minus@2x.png in Resources */,
+				8C073AA11B70FC5A005CE3AD /* jStick.png in Resources */,
+				8C073AA71B70FC5A005CE3AD /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
