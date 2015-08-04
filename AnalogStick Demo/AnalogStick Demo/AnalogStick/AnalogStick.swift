@@ -7,226 +7,130 @@
 //
 import SpriteKit
 
-public typealias AnalogStickMoveHandler = (AnalogStick) -> ()
-
-public struct AnalogStickData: CustomStringConvertible {
-    
-    var velocity: CGPoint = CGPointZero
-    var angular: CGFloat = 0
-    
-    public var description: String {
-        
-        return "velocity: \(velocity), angular: \(angular)"
-    }
+@objc protocol AnalogStickProtocol {
+    func moveAnalogStick(analogStick: AnalogStick, velocity: CGPoint, angularVelocity: Float)
 }
 
-let kStickOfSubstrateWidthPercent: CGFloat = 0.5 // [0..1]
-
-public class AnalogStick: SKNode {
+class AnalogStick: SKNode {
     
-    let stickNode = SKSpriteNode()
-    let substrateNode = SKSpriteNode()
-    
-    var tracking = false
-    var data = AnalogStickData()
     var velocityLoop: CADisplayLink?
-    var moveHandler: AnalogStickMoveHandler?
+    let thumbNode: SKSpriteNode, bgNode: SKSpriteNode
     
-    private var _stickColor = UIColor.lightGrayColor()
-    private var _substrateColor = UIColor.darkGrayColor()
-    
-    var stickColor: UIColor {
-        
-        get { return _stickColor }
-        
-        set(newColor) {
-            
-            stickImage = UIImage.circleWithRadius(diametr * kStickOfSubstrateWidthPercent, color: newColor)
-            _stickColor = newColor
+    func setThumbImage(image: UIImage?, sizeToFit: Bool) {
+        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSThumbImg")!
+        self.thumbNode.texture = SKTexture(image: tImage)
+        if sizeToFit {
+            self.thumbNodeDiametr = min(tImage.size.width, tImage.size.height)
         }
     }
-    
-    var substrateColor: UIColor {
-        
-        get { return _substrateColor }
-        
-        set(newColor) {
-            
-            substrateImage = UIImage.circleWithRadius(diametr, color: newColor, borderWidth: 5, borderColor: UIColor.blackColor())
-            _substrateColor = newColor
+    func setBgImage(image: UIImage?, sizeToFit: Bool) {
+        var tImage: UIImage = image != nil ? image! : UIImage(named: "aSBgImg")!
+        self.bgNode.texture = SKTexture(image: tImage)
+        if sizeToFit {
+            self.bgNodeDiametr = min(tImage.size.width, tImage.size.height)
         }
     }
-    
-    var stickImage: UIImage? {
-        
+    var bgNodeDiametr: CGFloat {
+        get { return self.bgNode.size.width }
+        set { self.bgNode.size = CGSizeMake(newValue, newValue) }
+    }
+    var thumbNodeDiametr: CGFloat {
+        get { return self.bgNode.size.width }
+        set { self.thumbNode.size = CGSizeMake(newValue, newValue) }
+    }
+    var delegate: AnalogStickProtocol? {
         didSet {
-            
-            guard let newImage = stickImage else {
-                
-                stickColor = _stickColor
-                return
+            velocityLoop?.invalidate()
+            velocityLoop = nil
+            if delegate != nil {
+                velocityLoop = CADisplayLink(target: self, selector: Selector("update"))
+                velocityLoop?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
             }
-            
-            stickNode.texture = SKTexture(image: newImage)
         }
     }
-    
-    var substrateImage: UIImage? {
-        
-        didSet {
-            
-            guard let newImage = substrateImage else {
-                
-                substrateColor = _substrateColor
-                return
-            }
-            
-            substrateNode.texture = SKTexture(image: newImage)
+    func update() {
+        if isTracking {
+           delegate?.moveAnalogStick(self, velocity: self.velocity, angularVelocity: self.angularVelocity)
         }
     }
-    
-    var diametr: CGFloat {
-    
-        get { return max(substrateNode.size.width, substrateNode.size.height) }
-        
-        set {
-            substrateNode.size = CGSizeMake(newValue, newValue)
-            stickNode.size = CGSizeMake(newValue * kStickOfSubstrateWidthPercent, newValue * kStickOfSubstrateWidthPercent)
-        }
-    }
-    
-    func listen() {
-        
-        guard tracking else { return }
-        moveHandler?(self)
-    }
-    
     let kThumbSpringBackDuration: NSTimeInterval = 0.15 // action duration
-    var anchorPointInPoints = CGPointZero
-    
-    init(diametr: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil) {
-        
+    var isTracking = false
+    var velocity = CGPointZero, anchorPointInPoints = CGPointZero
+    var angularVelocity = Float()
+    convenience init(thumbImage: UIImage?) {
+        self.init(thumbImage: thumbImage, bgImage: nil)
+    }
+    convenience init(bgImage: UIImage?) {
+        self.init(thumbImage: nil, bgImage: bgImage)
+    }
+    convenience override init() {
+        self.init(thumbImage: nil, bgImage: nil)
+    }
+    init(thumbImage: UIImage?, bgImage: UIImage?) {
+        self.thumbNode = SKSpriteNode()
+        self.bgNode = SKSpriteNode()
         super.init()
-        userInteractionEnabled = true;
-        
-        self.diametr = diametr
-        self.stickImage = stickImage
-        self.substrateImage = substrateImage
-        addChild(substrateNode)
-        addChild(stickNode)
-        
-        velocityLoop = CADisplayLink(target: self, selector: Selector("listen"))
-        velocityLoop!.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        setThumbImage(thumbImage, sizeToFit: true)
+        setBgImage(bgImage, sizeToFit: true)
+        self.userInteractionEnabled = true;
+        self.isTracking = false
+        self.velocity = CGPointZero
+        self.addChild(bgNode) // first bg
+        self.addChild(thumbNode) // after thumb
     }
-    
-    convenience init(diametr: CGFloat, substrateImage: UIImage?) {
-        
-        self.init(diametr: diametr, substrateImage: substrateImage, stickImage: nil)
-    }
-    
-    convenience init(diametr: CGFloat, stickImage: UIImage?) {
-        
-        self.init(diametr: diametr, substrateImage: nil, stickImage: stickImage)
-    }
-    
-    public required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func resetStick() {
-        
-        tracking = false
-        data.velocity = CGPointZero
-        data.angular = 0
-        let easeOut = SKAction.moveTo(anchorPointInPoints, duration: kThumbSpringBackDuration)
-        easeOut.timingMode = .EaseOut
-        stickNode.runAction(easeOut)
+    func reset() {
+        self.isTracking = false
+        self.velocity = CGPointZero
+        let easeOut: SKAction = SKAction.moveTo(self.anchorPointInPoints, duration: kThumbSpringBackDuration)
+        easeOut.timingMode = SKActionTimingMode.EaseOut
+        self.thumbNode.runAction(easeOut)
     }
-    
-    //MARK: - Overrides
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+    // touch begin
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
-        
-        for touch in touches {
-            
-            let touchedNode = nodeAtPoint(touch.locationInNode(self))
-            
-            guard self.stickNode == touchedNode && !tracking else { return }
-            
-            tracking = true
-        }
-    }
-    
-    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        super.touchesMoved(touches, withEvent: event);
-        
         for touch: AnyObject in touches {
-            
-            let location = touch.locationInNode(self);
-            let xDistance: Float = Float(location.x - self.stickNode.position.x)
-            let yDistance: Float = Float(location.y - self.stickNode.position.y)
-            
-            guard tracking && sqrtf(powf(xDistance, 2) + powf(yDistance, 2)) <= Float(diametr * 2) else { return }
-            
-            let xAnchorDistance: CGFloat = (location.x - anchorPointInPoints.x)
-            let yAnchorDistance: CGFloat = (location.y - anchorPointInPoints.y)
-            
-            if sqrt(pow(xAnchorDistance, 2) + pow(yAnchorDistance, 2)) <= self.stickNode.size.width {
-                
-                let moveDifference: CGPoint = CGPointMake(xAnchorDistance , yAnchorDistance)
-                stickNode.position = CGPointMake(anchorPointInPoints.x + moveDifference.x, anchorPointInPoints.y + moveDifference.y)
-            } else {
-                
-                let magV = sqrt(xAnchorDistance * xAnchorDistance + yAnchorDistance * yAnchorDistance)
-                let aX = anchorPointInPoints.x + xAnchorDistance / magV * stickNode.size.width
-                let aY = anchorPointInPoints.y + yAnchorDistance / magV * stickNode.size.width
-                stickNode.position = CGPointMake(aX, aY)
+            let location: CGPoint = touch.locationInNode(self)
+            let touchedNode = nodeAtPoint(location)
+            if self.thumbNode == touchedNode && isTracking == false {
+                isTracking = true
             }
-            
-            let tNAnchPoinXDiff = stickNode.position.x - anchorPointInPoints.x;
-            let tNAnchPoinYDiff = stickNode.position.y - anchorPointInPoints.y
-            
-            data = AnalogStickData(velocity: CGPointMake(tNAnchPoinXDiff, tNAnchPoinYDiff), angular: CGFloat(-atan2f(Float(tNAnchPoinXDiff), Float(tNAnchPoinYDiff))))
         }
     }
-    
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        super.touchesEnded(touches, withEvent: event)
-        resetStick()
-    }
-    
-    public override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        
-        super.touchesCancelled(touches, withEvent: event)
-        resetStick()
-    }
-}
-
-extension UIImage {
-    
-    static func circleWithRadius(radius: CGFloat, color: UIColor, borderWidth: CGFloat = 0, borderColor: UIColor? = nil) -> UIImage {
-        
-        let diametr = radius * 2
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(diametr + borderWidth * 2, diametr + borderWidth * 2), false, 0)
-        
-        let bPath = UIBezierPath(ovalInRect: CGRect(origin: CGPoint(x: borderWidth, y: borderWidth), size: CGSizeMake(diametr, diametr)))
-        
-        if let bC = borderColor {
-            
-            bC.setStroke()
-            bPath.lineWidth = borderWidth
-            bPath.stroke()
+    // touch move
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesMoved(touches, withEvent: event);
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self);
+            let xDistance: Float = Float(location.x - self.thumbNode.position.x)
+            let yDistance: Float = Float(location.y - self.thumbNode.position.y)
+            if self.isTracking == true && sqrtf(powf(xDistance, 2) + powf(yDistance, 2)) <= Float(self.bgNodeDiametr * 2) {
+                let xAnchorDistance: CGFloat = (location.x - self.anchorPointInPoints.x)
+                let yAnchorDistance: CGFloat = (location.y - self.anchorPointInPoints.y)
+                if sqrt(pow(xAnchorDistance, 2) + pow(yAnchorDistance, 2)) <= self.thumbNode.size.width {
+                    let moveDifference: CGPoint = CGPointMake(xAnchorDistance , yAnchorDistance)
+                    self.thumbNode.position = CGPointMake(self.anchorPointInPoints.x + moveDifference.x, self.anchorPointInPoints.y + moveDifference.y)
+                } else {
+                    let magV = sqrt(xAnchorDistance * xAnchorDistance + yAnchorDistance * yAnchorDistance)
+                    let aX = self.anchorPointInPoints.x + xAnchorDistance / magV * self.thumbNode.size.width
+                    let aY = self.anchorPointInPoints.y + yAnchorDistance / magV * self.thumbNode.size.width
+                    self.thumbNode.position = CGPointMake(aX, aY)
+                }
+                let tNAnchPoinXDiff: CGFloat = self.thumbNode.position.x - self.anchorPointInPoints.x;
+                let tNAnchPoinYDiff: CGFloat = self.thumbNode.position.y - self.anchorPointInPoints.y
+                self.velocity = CGPointMake(tNAnchPoinXDiff, tNAnchPoinYDiff)
+                self.angularVelocity = -atan2f(Float(tNAnchPoinXDiff), Float(tNAnchPoinYDiff))
+            }
         }
-        
-        color.setFill()
-        bPath.fill()
-        
-        let rImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return rImage
+    }
+    // touch end
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        reset()
+    }
+    // touch cancel
+    override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent!) {
+        reset()
     }
 }
