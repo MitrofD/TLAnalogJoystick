@@ -15,10 +15,16 @@
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
 		8C2C1F9119DD76AA00510F35 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */; };
-		8C2C1F9219DD76AA00510F35 /* aSBgImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */; };
-		8C2C1F9319DD76AA00510F35 /* aSThumbImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */; };
-		8C2C1F9419DD76AA00510F35 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8F19DD76AA00510F35 /* apple.png */; };
-		8C2C1F9519DD76AA00510F35 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F9019DD76AA00510F35 /* apple@2x.png */; };
+		8CD1BFF61B6E5C0B00C6D2E8 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */; };
+		8CD1BFF71B6E5C0B00C6D2E8 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */; };
+		8CD6E5C01B6ECBA700D3FC11 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */; };
+		8CD6E5C11B6ECBA700D3FC11 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BE1B6ECBA700D3FC11 /* minus.png */; };
+		8CD6E5C21B6ECBA700D3FC11 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5BF1B6ECBA700D3FC11 /* plus.png */; };
+		8CD6E5C41B6ED0F800D3FC11 /* minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */; };
+		8CD6E5C71B6EF6EB00D3FC11 /* jSubstrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */; };
+		8CD6E5C81B6EF6EB00D3FC11 /* jSubstrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */; };
+		8CD6E5CB1B6EF9DE00D3FC11 /* jStick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */; };
+		8CD6E5CC1B6EF9DE00D3FC11 /* jStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +50,16 @@
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
 		8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
-		8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSBgImg.png; sourceTree = "<group>"; };
-		8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSThumbImg.png; sourceTree = "<group>"; };
-		8C2C1F8F19DD76AA00510F35 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		8C2C1F9019DD76AA00510F35 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
+		8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
+		8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		8CD6E5BE1B6ECBA700D3FC11 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		8CD6E5BF1B6ECBA700D3FC11 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus@2x.png"; sourceTree = "<group>"; };
+		8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jSubstrate.png; sourceTree = "<group>"; };
+		8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jSubstrate@2x.png"; sourceTree = "<group>"; };
+		8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jStick@2x.png"; sourceTree = "<group>"; };
+		8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jStick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				8C2C1F8B19DD76AA00510F35 /* AnalogStick */,
-				8C2C1F8F19DD76AA00510F35 /* apple.png */,
-				8C2C1F9019DD76AA00510F35 /* apple@2x.png */,
 				8C2C1F6719DD762300510F35 /* AppDelegate.swift */,
 				8C2C1F6B19DD762300510F35 /* GameScene.swift */,
 				8C2C1F6D19DD762300510F35 /* GameViewController.swift */,
@@ -106,6 +116,7 @@
 		8C2C1F6519DD762300510F35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8CD1BFF31B6E5BFE00C6D2E8 /* images */,
 				8C2C1F6619DD762300510F35 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -132,10 +143,25 @@
 			isa = PBXGroup;
 			children = (
 				8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */,
-				8C2C1F8D19DD76AA00510F35 /* aSBgImg.png */,
-				8C2C1F8E19DD76AA00510F35 /* aSThumbImg.png */,
 			);
 			path = AnalogStick;
+			sourceTree = "<group>";
+		};
+		8CD1BFF31B6E5BFE00C6D2E8 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8CD6E5C91B6EF9DE00D3FC11 /* jStick@2x.png */,
+				8CD6E5CA1B6EF9DE00D3FC11 /* jStick.png */,
+				8CD6E5C51B6EF6EB00D3FC11 /* jSubstrate.png */,
+				8CD6E5C61B6EF6EB00D3FC11 /* jSubstrate@2x.png */,
+				8CD6E5C31B6ED0F800D3FC11 /* minus@2x.png */,
+				8CD6E5BD1B6ECBA700D3FC11 /* plus@2x.png */,
+				8CD6E5BE1B6ECBA700D3FC11 /* minus.png */,
+				8CD6E5BF1B6ECBA700D3FC11 /* plus.png */,
+				8CD1BFF41B6E5C0B00C6D2E8 /* apple.png */,
+				8CD1BFF51B6E5C0B00C6D2E8 /* apple@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +208,8 @@
 		8C2C1F5A19DD762300510F35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Dmitriy Mitrophanskiy";
 				TargetAttributes = {
 					8C2C1F6119DD762300510F35 = {
@@ -218,13 +245,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CD6E5C71B6EF6EB00D3FC11 /* jSubstrate.png in Resources */,
 				8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */,
+				8CD1BFF71B6E5C0B00C6D2E8 /* apple@2x.png in Resources */,
+				8CD6E5C01B6ECBA700D3FC11 /* plus@2x.png in Resources */,
+				8CD6E5C41B6ED0F800D3FC11 /* minus@2x.png in Resources */,
+				8CD6E5CC1B6EF9DE00D3FC11 /* jStick.png in Resources */,
 				8C2C1F7319DD762300510F35 /* Images.xcassets in Resources */,
-				8C2C1F9319DD76AA00510F35 /* aSThumbImg.png in Resources */,
-				8C2C1F9519DD76AA00510F35 /* apple@2x.png in Resources */,
-				8C2C1F9419DD76AA00510F35 /* apple.png in Resources */,
-				8C2C1F9219DD76AA00510F35 /* aSBgImg.png in Resources */,
+				8CD6E5C11B6ECBA700D3FC11 /* minus.png in Resources */,
+				8CD1BFF61B6E5C0B00C6D2E8 /* apple.png in Resources */,
 				8C2C1F7119DD762300510F35 /* Main.storyboard in Resources */,
+				8CD6E5C81B6EF6EB00D3FC11 /* jSubstrate@2x.png in Resources */,
+				8CD6E5CB1B6EF9DE00D3FC11 /* jStick@2x.png in Resources */,
+				8CD6E5C21B6ECBA700D3FC11 /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +340,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -370,6 +404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AnalogStick Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -380,6 +415,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AnalogStick Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -398,6 +434,7 @@
 				);
 				INFOPLIST_FILE = "AnalogStick DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnalogStick Demo.app/AnalogStick Demo";
 			};
@@ -413,6 +450,7 @@
 				);
 				INFOPLIST_FILE = "AnalogStick DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Dmitriy-Mitrophanskiy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnalogStick Demo.app/AnalogStick Demo";
 			};
