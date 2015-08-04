@@ -1,16 +1,22 @@
+<style type="text/css">
+.purpure {
+	color: #432498;
+}
+</style>
+
 Swift-SpriteKit-Analog-Stick
 ============================
-<h2>How to use:</h2>
+<h2 class="purpure">How to use:</h2>
 <ol>
 <li>Import "AnalogStick" folder to your project</li>
 <li>Use</li>
 </ol>
 ============================
-<h3>Description</h3>
+<h2 class="purpure">Description</h2>
 <p>Virtual analog joystick</p>
 <img src="https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif" />
 ============================
-<h3>Initialization</h3>
+<h2 class="purpure">Initializations:</h2>
 <p>
 UIImage bgImage = UIImage(named: "bgImage")<br/>
 UIImage thumbImage = UIImage(named: "thumbImage")
