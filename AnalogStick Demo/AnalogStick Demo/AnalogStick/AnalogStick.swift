@@ -27,10 +27,10 @@ public class AnalogStick: SKNode {
     let stickNode = SKSpriteNode()
     let substrateNode = SKSpriteNode()
     
-    var tracking = false
+    private var tracking = false
+    private var velocityLoop: CADisplayLink?
     var data = AnalogStickData()
-    var velocityLoop: CADisplayLink?
-    var moveHandler: AnalogStickMoveHandler?
+    var trackingHandler: AnalogStickMoveHandler?
     
     private var _stickColor = UIColor.lightGrayColor()
     private var _substrateColor = UIColor.darkGrayColor()
@@ -98,7 +98,7 @@ public class AnalogStick: SKNode {
     func listen() {
         
         guard tracking else { return }
-        moveHandler?(self)
+        trackingHandler?(self)
     }
     
     let kThumbSpringBackDuration: NSTimeInterval = 0.15 // action duration

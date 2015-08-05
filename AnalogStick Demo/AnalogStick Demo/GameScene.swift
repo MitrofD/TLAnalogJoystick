@@ -73,7 +73,7 @@ class GameScene: SKScene {
         
         moveAnalogStick.diametr = kAnalogStickDiametr
         moveAnalogStick.position = CGPointMake(jRadius + 15, jRadius + 15)
-        moveAnalogStick.moveHandler = { analogStick in
+        moveAnalogStick.trackingHandler = { analogStick in
             
             guard let aN = self.appleNode else { return }
             
@@ -84,7 +84,7 @@ class GameScene: SKScene {
         rotateAnalogStick.diametr = kAnalogStickDiametr
         rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - jRadius - 15, jRadius + 15)
         
-        rotateAnalogStick.moveHandler = { analogStick in
+        rotateAnalogStick.trackingHandler = { analogStick in
             
             self.appleNode?.zRotation = analogStick.data.angular
         }
