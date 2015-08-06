@@ -6,7 +6,7 @@ Virtual analog stick in swift with closures
 - Support only Swift 2
 
 ## Preview
-<img src="https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif" />
+![alt tag](https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif)
 
 ## Features
 - set/change stick & substrate colors
@@ -15,10 +15,8 @@ Virtual analog stick in swift with closures
 - tracking joystick with closures
 
 ## Manual
-<ol>
-<li>Just drop the **AnalogStick.swift** file into your project.</li>
-<li>That's it!</li>
-</ol>
+1. Just drop the **AnalogStick.swift** file into your project.
+2. That's it!
 
 ### Convenience initializators:
 ``` swift
@@ -53,10 +51,13 @@ typealias AnalogStickMoveHandler = (AnalogStick) -> ()
 ### Create joystick
 ``` swift
 let analogStick = AnalogStick(diameter: 120) // you can set images/color later
-// with images
+```
+or with images
+``` swift
 let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage", stickImage: UIImage(imageNamed: "yourImage")))
 ```
 ### Change colors
 ``` swift
-
+  analogStick.stickColor = UIColor.redColor() // set red color to stick node
+  analogStick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
 ```
