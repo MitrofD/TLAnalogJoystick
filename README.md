@@ -57,21 +57,6 @@ let analogStick = AnalogStick(diameter: 120) // you can set images/color later
 ``` swift
 let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage"), stickImage: UIImage(imageNamed: "yourImage")))
 ```
-### Change diameter
-``` swift
-  analogStick.diameter = 100 // set new diameter
-```
-### Change colors
-``` swift
-  analogStick.stickColor = UIColor.redColor() // set red color to stick node
-  analogStick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
-```
-### Change images
-``` swift
-  analogStick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
-  analogStick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
-```
-
 ### Tracking With Closure
 ``` swift
   analogStick.trackingHandler = { analogStick in
@@ -85,4 +70,18 @@ let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed:
   }
   
   analogStick.trackingHandler = handlerTracking
+```
+### Change diameter
+``` swift
+  analogStick.diameter = 100 // set new diameter
+```
+### Change colors
+``` swift
+  analogStick.stickColor = UIColor.redColor() // set red color to stick node
+  analogStick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
+```
+### Change images
+``` swift
+  analogStick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
+  analogStick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
 ```
