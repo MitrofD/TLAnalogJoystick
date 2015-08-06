@@ -42,13 +42,21 @@ typealias AnalogStickMoveHandler = (AnalogStick) -> ()
 ```
 
 ### Computed Properties
-- ``` swift
-  var trackingHandler: AnalogStickMoveHandler?
-  ```
+- var trackingHandler: AnalogStickMoveHandler?
 - var stickColor: UIColor
 - var substrateColor: UIColor
 - var stickImage: UIImage?
 - var substrateImage: UIImage?
 - var diameter: CGFloat
 
+## Examples
+### Create joystick
+``` swift
+let analogStick = AnalogStick(diameter: 120) // you can set images/color later
+// with images
+let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage", stickImage: UIImage(imageNamed: "yourImage")))
+```
+### Change colors
+``` swift
 
+```
