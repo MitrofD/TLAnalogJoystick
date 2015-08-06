@@ -7,8 +7,8 @@ Virtual analog stick in swift with closures
 
 ## Installation
 <ol>
-<li>Import "AnalogStick" folder to your project</li>
-<li>Use</li>
+<li>Just drop the **AnalogStick.swift** file into your project.</li>
+<li>That's it!</li>
 </ol>
 
 ## Preview
@@ -17,11 +17,15 @@ Virtual analog stick in swift with closures
 ## Initializations
 ### Designated:
 ``` swift
-init(diametr: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil)
+init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil)
 ```
 
 ### Convenience:
 ``` swift
-init(diametr: CGFloat, substrateImage: UIImage?)
-init(diametr: CGFloat, stickImage: UIImage?)
+init(diameter: CGFloat, substrateImage: UIImage?)
+init(diameter: CGFloat, stickImage: UIImage?)
 ```
+**WHERE:**
+- **diameter** is the diameter of the joystick
+- **substrateImage** is the substrate image of the joystick
+- **stickImage** is the stick image of the joystick
