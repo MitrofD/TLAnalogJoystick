@@ -42,13 +42,11 @@ typealias AnalogStickMoveHandler = (AnalogStick) -> ()
 ```
 
 ### Computed Properties
-``` swift
-- var trackingHandler: AnalogStickMoveHandler?
+- ``` swift var trackingHandler: AnalogStickMoveHandler?```
 - var stickColor: UIColor
 - var substrateColor: UIColor
 - var stickImage: UIImage?
 - var substrateImage: UIImage?
 - var diameter: CGFloat
-```
 
 
