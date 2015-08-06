@@ -20,6 +20,7 @@ Virtual analog stick in swift with closures
 
 ### Convenience initializators:
 ``` swift
+init(diameter: CGFloat)
 init(diameter: CGFloat, substrateImage: UIImage?)
 init(diameter: CGFloat, stickImage: UIImage?)
 ```
@@ -69,4 +70,19 @@ let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed:
 ``` swift
   analogStick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
   analogStick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
+```
+
+### Tracking With Closure
+``` swift
+  analogStick.trackingHandler = { analogStick in
+      //  something...
+  }
+```
+**OR**
+``` swift
+  func handlerTracking(analogStick: AnalogStick) {
+    //  something...
+  }
+  
+  analogStick.trackingHandler = handlerTracking
 ```
