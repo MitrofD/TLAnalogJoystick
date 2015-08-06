@@ -63,7 +63,7 @@ let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed:
       //  something...
   }
 ```
-**OR**
+**or**
 ``` swift
   func handlerTracking(analogStick: AnalogStick) {
     //  something...
