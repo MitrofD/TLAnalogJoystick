@@ -41,7 +41,7 @@ public class AnalogStick: SKNode {
         
         set(newColor) {
             
-            stickImage = UIImage.circleWithRadius(diametr * kStickOfSubstrateWidthPercent, color: newColor)
+            stickImage = UIImage.circleWithRadius(diameter * kStickOfSubstrateWidthPercent, color: newColor)
             _stickColor = newColor
         }
     }
@@ -52,7 +52,7 @@ public class AnalogStick: SKNode {
         
         set(newColor) {
             
-            substrateImage = UIImage.circleWithRadius(diametr, color: newColor, borderWidth: 5, borderColor: UIColor.blackColor())
+            substrateImage = UIImage.circleWithRadius(diameter, color: newColor, borderWidth: 5, borderColor: UIColor.blackColor())
             _substrateColor = newColor
         }
     }
@@ -85,7 +85,7 @@ public class AnalogStick: SKNode {
         }
     }
     
-    var diametr: CGFloat {
+    var diameter: CGFloat {
         
         get { return max(substrateNode.size.width, substrateNode.size.height) }
         
@@ -104,12 +104,12 @@ public class AnalogStick: SKNode {
     let kThumbSpringBackDuration: NSTimeInterval = 0.15 // action duration
     var anchorPointInPoints = CGPointZero
     
-    init(diametr: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil) {
+    init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil) {
         
         super.init()
         userInteractionEnabled = true;
         
-        self.diametr = diametr
+        self.diameter = diameter
         self.stickImage = stickImage
         self.substrateImage = substrateImage
         addChild(substrateNode)
@@ -119,14 +119,14 @@ public class AnalogStick: SKNode {
         velocityLoop!.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
     }
     
-    convenience init(diametr: CGFloat, substrateImage: UIImage?) {
+    convenience init(diameter: CGFloat, substrateImage: UIImage?) {
         
-        self.init(diametr: diametr, substrateImage: substrateImage, stickImage: nil)
+        self.init(diameter: diameter, substrateImage: substrateImage, stickImage: nil)
     }
     
-    convenience init(diametr: CGFloat, stickImage: UIImage?) {
+    convenience init(diameter: CGFloat, stickImage: UIImage?) {
         
-        self.init(diametr: diametr, substrateImage: nil, stickImage: stickImage)
+        self.init(diameter: diameter, substrateImage: nil, stickImage: stickImage)
     }
     
     public required init(coder aDecoder: NSCoder) {
@@ -168,7 +168,7 @@ public class AnalogStick: SKNode {
             let xDistance: Float = Float(location.x - self.stickNode.position.x)
             let yDistance: Float = Float(location.y - self.stickNode.position.y)
             
-            guard tracking && sqrtf(powf(xDistance, 2) + powf(yDistance, 2)) <= Float(diametr * 2) else { return }
+            guard tracking && sqrtf(powf(xDistance, 2) + powf(yDistance, 2)) <= Float(diameter * 2) else { return }
             
             let xAnchorDistance: CGFloat = (location.x - anchorPointInPoints.x)
             let yAnchorDistance: CGFloat = (location.y - anchorPointInPoints.y)

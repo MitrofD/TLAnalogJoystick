@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-let kAnalogStickDiametr: CGFloat = 110
+let kAnalogStickdiameter: CGFloat = 110
 
 class GameScene: SKScene {
     
@@ -51,27 +51,27 @@ class GameScene: SKScene {
         }
     }
     
-    var joysticksDiametrs: CGFloat {
+    var joysticksdiameters: CGFloat {
         
-        get { return max(moveAnalogStick.diametr, rotateAnalogStick.diametr) }
+        get { return max(moveAnalogStick.diameter, rotateAnalogStick.diameter) }
         
-        set(newDiametr) {
+        set(newdiameter) {
             
-            moveAnalogStick.diametr = newDiametr
-            rotateAnalogStick.diametr = newDiametr
+            moveAnalogStick.diameter = newdiameter
+            rotateAnalogStick.diameter = newdiameter
         }
     }
     
-    let moveAnalogStick = AnalogStick(diametr: kAnalogStickDiametr)
-    let rotateAnalogStick = AnalogStick(diametr: kAnalogStickDiametr)
+    let moveAnalogStick = AnalogStick(diameter: kAnalogStickdiameter)
+    let rotateAnalogStick = AnalogStick(diameter: kAnalogStickdiameter)
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
         backgroundColor = UIColor.whiteColor()
-        let jRadius = kAnalogStickDiametr / 2
+        let jRadius = kAnalogStickdiameter / 2
         
-        moveAnalogStick.diametr = kAnalogStickDiametr
+        moveAnalogStick.diameter = kAnalogStickdiameter
         moveAnalogStick.position = CGPointMake(jRadius + 15, jRadius + 15)
         moveAnalogStick.trackingHandler = { analogStick in
             
@@ -81,7 +81,7 @@ class GameScene: SKScene {
         }
         addChild(moveAnalogStick)
         
-        rotateAnalogStick.diametr = kAnalogStickDiametr
+        rotateAnalogStick.diameter = kAnalogStickdiameter
         rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - jRadius - 15, jRadius + 15)
         
         rotateAnalogStick.trackingHandler = { analogStick in
@@ -179,9 +179,9 @@ class GameScene: SKScene {
             switch node {
                 
             case jSizePlusSpriteNode:
-                joysticksDiametrs = joysticksDiametrs + 1
+                joysticksdiameters = joysticksdiameters + 1
             case jSizeMinusSpriteNode:
-                joysticksDiametrs = joysticksDiametrs - 1
+                joysticksdiameters = joysticksdiameters - 1
             case setJoystickStickImageBtn:
                 isSetJoystickStickImage = !isSetJoystickStickImage
             case setJoystickSubstrateImageBtn:
