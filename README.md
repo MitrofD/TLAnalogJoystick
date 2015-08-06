@@ -12,7 +12,7 @@ Virtual analog stick in swift with closures
 - set/change stick & substrate colors
 - set/change stick & substrate images
 - set/change joystick diameter
-- tracking joystick
+- tracking joystick with closures
 
 ## Manual
 <ol>
@@ -20,16 +20,17 @@ Virtual analog stick in swift with closures
 <li>That's it!</li>
 </ol>
 
-### Designated initializator
-``` swift
-init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil)
-```
-
 ### Convenience initializators:
 ``` swift
 init(diameter: CGFloat, substrateImage: UIImage?)
 init(diameter: CGFloat, stickImage: UIImage?)
 ```
+
+### Designated initializator
+``` swift
+init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil)
+```
+
 **WHERE:**
 - **diameter** is the diameter of the joystick
 - **substrateImage** is the substrate image of the joystick
