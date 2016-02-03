@@ -8,98 +8,60 @@
 
 import SpriteKit
 
-let kAnalogStickdiameter: CGFloat = 110
-
 class GameScene: SKScene {
     
     var appleNode: SKSpriteNode?
+    let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "plus"), jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "minus"),
+    setJoystickStickImageBtn = SKLabelNode(), setJoystickSubstrateImageBtn = SKLabelNode(),
+    joystickStickColorBtn = SKLabelNode(text: "Sticks Random Color"), joystickSubstrateColorBtn = SKLabelNode(text: "Substrates Random Color")
     
-    let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "plus"), jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "minus")
-    
-    let setJoystickStickImageBtn = SKLabelNode()
-    let setJoystickSubstrateImageBtn = SKLabelNode()
-    let joystickStickColorBtn = SKLabelNode(text: "Sticks Random Color")
-    let joystickSubstrateColorBtn = SKLabelNode(text: "Substrates Random Color")
-    
-    private var _isSetJoystickStickImage = false, _isSetJoystickSubstrateImage = false
-    
-    var isSetJoystickStickImage: Bool {
+    var joystickStickImageEnabled = true {
         
-        get { return _isSetJoystickStickImage }
-        
-        set {
+        didSet {
             
-            _isSetJoystickStickImage = newValue
-            let image = newValue ? UIImage(named: "jStick") : nil
-            moveAnalogStick.stickImage = image
-            rotateAnalogStick.stickImage = image
-            setJoystickStickImageBtn.text = newValue ? "Remove Stick Images" : "Set Stick Images"
+            let image = joystickStickImageEnabled ? UIImage(named: "jStick") : nil
+            moveAnalogStick.stick.image = image
+            rotateAnalogStick.stick.image = image
+            setJoystickStickImageBtn.text = joystickStickImageEnabled ? "Remove Stick Images" : "Set Stick Images"
         }
     }
     
-    var isSetJoystickSubstrateImage: Bool {
+    var joystickSubstrateImageEnabled = true {
         
-        get { return _isSetJoystickSubstrateImage }
-        
-        set {
+        didSet {
             
-            _isSetJoystickSubstrateImage = newValue
-            let image = newValue ? UIImage(named: "jSubstrate") : nil
-            moveAnalogStick.substrateImage = image
-            rotateAnalogStick.substrateImage = image
-            setJoystickSubstrateImageBtn.text = newValue ? "Remove Substrate Images" : "Set Substrate Images"
+            let image = joystickSubstrateImageEnabled ? UIImage(named: "jSubstrate") : nil
+            moveAnalogStick.substrate.image = image
+            rotateAnalogStick.substrate.image = image
+            setJoystickSubstrateImageBtn.text = joystickSubstrateImageEnabled ? "Remove Substrate Images" : "Set Substrate Images"
         }
     }
     
-    var joysticksdiameters: CGFloat {
-        
-        get { return max(moveAnalogStick.diameter, rotateAnalogStick.diameter) }
-        
-        set(newdiameter) {
-            
-            moveAnalogStick.diameter = newdiameter
-            rotateAnalogStick.diameter = newdiameter
-        }
-    }
-    
-    let moveAnalogStick = AnalogStick(diameter: kAnalogStickdiameter)
-    let rotateAnalogStick = AnalogStick(diameter: kAnalogStickdiameter)
+    let moveAnalogStick =  AnalogJoystick(diameter: 110)
+    let rotateAnalogStick = AnalogJoystick(diameter: 110)
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
         backgroundColor = UIColor.whiteColor()
-        let jRadius = kAnalogStickdiameter / 2
+        physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
         
-        moveAnalogStick.diameter = kAnalogStickdiameter
-        moveAnalogStick.position = CGPointMake(jRadius + 15, jRadius + 15)
-        moveAnalogStick.trackingHandler = { analogStick in
+        moveAnalogStick.position = CGPointMake(moveAnalogStick.radius + 15, moveAnalogStick.radius + 15)
+        addChild(moveAnalogStick)
+        moveAnalogStick.trackingHandler = { jData in
             
             guard let aN = self.appleNode else { return }
-            
-            aN.position = CGPointMake(aN.position.x + (analogStick.data.velocity.x * 0.12), aN.position.y + (analogStick.data.velocity.y * 0.12))
-        }
-        addChild(moveAnalogStick)
-        
-        rotateAnalogStick.diameter = kAnalogStickdiameter
-        rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - jRadius - 15, jRadius + 15)
-        
-        rotateAnalogStick.trackingHandler = { analogStick in
-            
-            self.appleNode?.zRotation = analogStick.data.angular
+            aN.position = CGPointMake(aN.position.x + (jData.velocity.x * 0.12), aN.position.y + (jData.velocity.y * 0.12))
         }
         
+        rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - rotateAnalogStick.radius - 15, rotateAnalogStick.radius + 15)
         addChild(rotateAnalogStick)
+        rotateAnalogStick.trackingHandler = { jData in
+            
+            self.appleNode?.zRotation = jData.angular
+        }
         
-        appleNode = appendAppleToPoint(CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)))
-        insertChild(appleNode!, atIndex: 0)
-        physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        
-        addChild(appendAppleToPoint(CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))))
-        
-        let btnsOffset = CGFloat(10)
+        let btnsOffset: CGFloat = 10
         let btnsOffsetHalf = btnsOffset / 2
-        
         let joystickSizeLabel = SKLabelNode(text: "Joysticks Size:")
         joystickSizeLabel.fontSize = 20
         joystickSizeLabel.fontColor = UIColor.blackColor()
@@ -113,7 +75,6 @@ class GameScene: SKScene {
         joystickStickColorBtn.verticalAlignmentMode = .Top
         joystickStickColorBtn.horizontalAlignmentMode = .Left
         joystickStickColorBtn.position = CGPoint(x: btnsOffset, y: self.frame.size.height - 40)
-        
         addChild(joystickStickColorBtn)
         
         joystickSubstrateColorBtn.fontColor = UIColor.blackColor()
@@ -121,56 +82,55 @@ class GameScene: SKScene {
         joystickSubstrateColorBtn.verticalAlignmentMode = .Top
         joystickSubstrateColorBtn.horizontalAlignmentMode = .Left
         joystickSubstrateColorBtn.position = CGPoint(x: btnsOffset, y: self.frame.size.height - 65)
-        
         addChild(joystickSubstrateColorBtn)
         
-        jSizePlusSpriteNode.anchorPoint = CGPoint(x: 0, y: 0.5)
         jSizeMinusSpriteNode.anchorPoint = CGPoint(x: 0, y: 0.5)
-        
         jSizeMinusSpriteNode.position = CGPoint(x: CGRectGetMaxX(joystickSizeLabel.frame) + btnsOffset, y: CGRectGetMidY(joystickSizeLabel.frame))
-        
-        jSizePlusSpriteNode.position = CGPoint(x: CGRectGetMaxX(jSizeMinusSpriteNode.frame) + btnsOffset, y: CGRectGetMidY(joystickSizeLabel.frame))
-        
-        addChild(jSizePlusSpriteNode)
         addChild(jSizeMinusSpriteNode)
+        
+        jSizePlusSpriteNode.anchorPoint = CGPoint(x: 0, y: 0.5)
+        jSizePlusSpriteNode.position = CGPoint(x: CGRectGetMaxX(jSizeMinusSpriteNode.frame) + btnsOffset, y: CGRectGetMidY(joystickSizeLabel.frame))
+        addChild(jSizePlusSpriteNode)
         
         setJoystickStickImageBtn.fontColor = UIColor.blackColor()
         setJoystickStickImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .Bottom
         setJoystickStickImageBtn.position = CGPointMake(CGRectGetMidX(self.frame), moveAnalogStick.position.y - btnsOffsetHalf)
-        
         addChild(setJoystickStickImageBtn)
         
         setJoystickSubstrateImageBtn.fontColor  = UIColor.blackColor()
         setJoystickSubstrateImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .Top
         setJoystickSubstrateImageBtn.position = CGPointMake(CGRectGetMidX(self.frame), moveAnalogStick.position.y + btnsOffsetHalf)
-        
         addChild(setJoystickSubstrateImageBtn)
         
-        isSetJoystickStickImage = _isSetJoystickStickImage
-        isSetJoystickSubstrateImage = _isSetJoystickSubstrateImage
+        joystickStickImageEnabled = true
+        joystickSubstrateImageEnabled = true
+        
+        setRandomStickColor()
+        addApple(CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame)))
     }
     
-    func appendAppleToPoint(position: CGPoint) -> SKSpriteNode {
+    func addApple(position: CGPoint) {
         
-        let appleImage = UIImage(named: "apple")
+        guard let appleImage = UIImage(named: "apple") else { return }
         
-        precondition(appleImage != nil, "Please set right image")
-        
-        let texture = SKTexture(image: appleImage!)
-        
+        let texture = SKTexture(image: appleImage)
         let apple = SKSpriteNode(texture: texture)
-        apple.physicsBody = SKPhysicsBody(texture: texture, size: apple.size)
-        apple.physicsBody!.affectedByGravity = false
-        apple.position = position
+        if #available(iOS 8.0, *) {
+            apple.physicsBody = SKPhysicsBody(texture: texture, size: apple.size)
+            apple.physicsBody!.affectedByGravity = false
+        } else {
+            // Fallback on earlier versions
+        }
         
-        return apple
+        insertChild(apple, atIndex: 0)
+        apple.position = position
+        appleNode = apple
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
-        super.touchesBegan(touches, withEvent: event)
         
         if let touch = touches.first {
             
@@ -179,27 +139,37 @@ class GameScene: SKScene {
             switch node {
                 
             case jSizePlusSpriteNode:
-                joysticksdiameters = joysticksdiameters + 1
+                moveAnalogStick.diameter += 1
+                rotateAnalogStick.diameter += 1
             case jSizeMinusSpriteNode:
-                joysticksdiameters = joysticksdiameters - 1
+                moveAnalogStick.diameter -= 1
+                rotateAnalogStick.diameter -= 1
             case setJoystickStickImageBtn:
-                isSetJoystickStickImage = !isSetJoystickStickImage
+                joystickStickImageEnabled = !joystickStickImageEnabled
             case setJoystickSubstrateImageBtn:
-                isSetJoystickSubstrateImage = !isSetJoystickSubstrateImage
+                joystickSubstrateImageEnabled = !joystickSubstrateImageEnabled
             case joystickStickColorBtn:
-                isSetJoystickStickImage = false
-                let randomColor = UIColor.random()
-                moveAnalogStick.stickColor = randomColor
-                rotateAnalogStick.stickColor = randomColor
+                setRandomStickColor()
             case joystickSubstrateColorBtn:
-                isSetJoystickSubstrateImage = false
-                let randomColor = UIColor.random()
-                moveAnalogStick.substrateColor = randomColor
-                rotateAnalogStick.substrateColor = randomColor
+                setRandomSubstrateColor()
             default:
-                appleNode?.position = touch.locationInNode(self)
+                addApple(touch.locationInNode(self))
             }
         }
+    }
+    
+    func setRandomStickColor() {
+        
+        let randomColor = UIColor.random()
+        moveAnalogStick.stick.color = randomColor
+        rotateAnalogStick.stick.color = randomColor
+    }
+    
+    func setRandomSubstrateColor() {
+        
+        let randomColor = UIColor.random()
+        moveAnalogStick.substrate.color = randomColor
+        rotateAnalogStick.substrate.color = randomColor
     }
     
     override func update(currentTime: CFTimeInterval) {

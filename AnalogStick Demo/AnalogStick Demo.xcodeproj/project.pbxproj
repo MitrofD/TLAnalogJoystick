@@ -24,7 +24,7 @@
 		8C2C1F7319DD762300510F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7219DD762300510F35 /* Images.xcassets */; };
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
-		8C2C1F9119DD76AA00510F35 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */; };
+		8C2C1F9119DD76AA00510F35 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogJoystick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 		8C2C1F7B19DD762300510F35 /* AnalogStick DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnalogStick DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
-		8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
+		8C2C1F8C19DD76AA00510F35 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 		8C2C1F6419DD762300510F35 /* AnalogStick Demo */ = {
 			isa = PBXGroup;
 			children = (
-				8C2C1F8B19DD76AA00510F35 /* AnalogStick */,
+				8C2C1F8B19DD76AA00510F35 /* AnalogJoystick */,
 				8C2C1F6719DD762300510F35 /* AppDelegate.swift */,
 				8C2C1F6B19DD762300510F35 /* GameScene.swift */,
 				8C2C1F6D19DD762300510F35 /* GameViewController.swift */,
@@ -156,11 +156,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8C2C1F8B19DD76AA00510F35 /* AnalogStick */ = {
+		8C2C1F8B19DD76AA00510F35 /* AnalogJoystick */ = {
 			isa = PBXGroup;
 			children = (
-				8C2C1F8C19DD76AA00510F35 /* AnalogStick.swift */,
+				8C2C1F8C19DD76AA00510F35 /* AnalogJoystick.swift */,
 			);
+			name = AnalogJoystick;
 			path = AnalogStick;
 			sourceTree = "<group>";
 		};
@@ -275,7 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C2C1F9119DD76AA00510F35 /* AnalogStick.swift in Sources */,
+				8C2C1F9119DD76AA00510F35 /* AnalogJoystick.swift in Sources */,
 				8C2C1F6C19DD762300510F35 /* GameScene.swift in Sources */,
 				8C2C1F6E19DD762300510F35 /* GameViewController.swift in Sources */,
 				8C2C1F6819DD762300510F35 /* AppDelegate.swift in Sources */,
@@ -355,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -391,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
