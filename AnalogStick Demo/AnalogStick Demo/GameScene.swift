@@ -37,7 +37,7 @@ class GameScene: SKScene {
         }
     }
     
-    let moveAnalogStick =  AnalogJoystick(diameter: 110)
+    let moveAnalogStick =  🕹(diameter: 110)
     let rotateAnalogStick = AnalogJoystick(diameter: 110)
     
     override func didMoveToView(view: SKView) {

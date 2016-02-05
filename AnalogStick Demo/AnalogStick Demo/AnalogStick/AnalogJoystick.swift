@@ -113,6 +113,7 @@ public class AnalogJoystickStick: AnalogJoystickComponent {
 }
 
 //MARK: - AnalogJoystick
+typealias 🕹 = AnalogJoystick
 public class AnalogJoystick: SKNode {
     
     typealias AnalogJoystickMoveHandler = ((AnalogJoystickData) -> ())
