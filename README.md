@@ -1,17 +1,15 @@
 # AnalogJoystick.swift
 
-Analog Joystick in swift with closures
-
-## Preview
+### Preview
 ![alt tag](https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif)
 
-## Features
+### Features
 - tracking joystick with closures
 - set/change joystick diameter
 - set/change stick & substrate colors
 - set/change stick & substrate images
 
-## Manual
+### Manual
 1. Just drop the **AnalogJoystick.swift** file into your project.
 2. That's it!
 
@@ -35,6 +33,18 @@ let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"
 ***init with 100px diameter.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
 ``` swift
 let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
+```
+***init with substrate && stick diameters.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
+``` swift
+let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blueColor(), UIColor.yellowColor()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
+```
+***init with substrate && stick diameters.Substrate has blue color, stick has yellow color***
+``` swift
+let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blueColor(), UIColor.yellowColor()))
+```
+***init with substrate && stick diameters.Substrate has "substrate" image, stick has "stick" image***
+``` swift
+let joystick = AnalogJoystick(diameters: (100, 50), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
 ```
 
 ### Designated initializator
