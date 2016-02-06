@@ -1,43 +1,63 @@
-# AnalogStick.swift
+# AnalogJoystick.swift
 
-Virtual analog stick in swift with closures
-
-**NOTES:**
-- Support only Swift 2
+Analog Joystick in swift with closures
 
 ## Preview
 ![alt tag](https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif)
 
 ## Features
+- tracking joystick with closures
+- set/change joystick diameter
 - set/change stick & substrate colors
 - set/change stick & substrate images
-- set/change joystick diameter
-- tracking joystick with closures
 
 ## Manual
-1. Just drop the **AnalogStick.swift** file into your project.
+1. Just drop the **AnalogJoystick.swift** file into your project.
 2. That's it!
 
-### Convenience initializators:
+### Init examples:
+***init with 100px diameter.Colors & images you can change later***
 ``` swift
-init(diameter: CGFloat)
-init(diameter: CGFloat, substrateImage: UIImage?)
-init(diameter: CGFloat, stickImage: UIImage?)
+let joystick = AnalogJoystick(diameter: 100)
+```
+***Substrate has 100px diameter, stick has 50px diameter***
+``` swift
+let joystick =AnalogJoystick(diameters: (100, 50))
+```
+***init with 100px diameter.Substrate has blue color, stick has yellow color***
+``` swift
+let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()))
+```
+***init with 100px diameter.Substrate has "substrate" image, stick has "stick" image***
+``` swift
+let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"), UIImage(named: "stick")))
+```
+***init with 100px diameter.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
+``` swift
+let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
 ```
 
 ### Designated initializator
 ``` swift
-init(diameter: CGFloat, substrateImage: UIImage? = nil, stickImage: UIImage? = nil)
+init(substrate: AnalogJoystickSubstrate, stick: AnalogJoystickStick)
 ```
-
 **WHERE:**
-- **diameter** is the diameter of the joystick
-- **substrateImage** is the substrate image of the joystick
-- **stickImage** is the stick image of the joystick
+- **substrate** Substrate of joystick (AnalogJoystickSubstrate:AnalogJoystickComponent)
+- **stick** Stick of joystick (AnalogJoystickStick:AnalogJoystickComponent)
+
+### Convenience initializators:
+``` swift
+convenience init(diameters: (substrate: CGFloat, stick: CGFloat?), colors: (substrate: UIColor?, stick: UIColor?)? = nil, images: (substrate: UIImage?, stick: UIImage?)? = nil)
+convenience init(diameter: CGFloat, colors: (substrate: UIColor?, stick: UIColor?)? = nil, images: (substrate: UIImage?, stick: UIImage?)? = nil)
+```
 
 ### Typealias
 ``` swift
-typealias AnalogStickMoveHandler = (AnalogStick) -> ()
+typealias AnalogJoystick = 🕹
+```
+## Example
+``` swift
+let joystick =  🕹(diameter: 110) // let joystick = AnalogJoystick(diameter: 110)
 ```
 
 ### Computed Properties
@@ -51,45 +71,45 @@ typealias AnalogStickMoveHandler = (AnalogStick) -> ()
 ## Examples
 ### Create joystick
 ``` swift
-let analogStick = AnalogStick(diameter: 120) // you can set images/color later
+let joystick = AnalogStick(diameter: 120) // you can set images/color later
 ```
 **or with images**
 ``` swift
-let analogStick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage"), stickImage: UIImage(imageNamed: "yourImage")))
+let joystick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage"), stickImage: UIImage(imageNamed: "yourImage")))
 ```
 ### Tracking With Closure
 ``` swift
-  analogStick.trackingHandler = { analogStick in
+  joystick.trackingHandler = { data in
       //  something...
   }
 ```
 **or**
 ``` swift
-  func handlerTracking(analogStick: AnalogStick) {
+  func handlerTracking(data: AnalogJoystickData) {
     //  something...
   }
   
-  analogStick.trackingHandler = handlerTracking
+  joystick.trackingHandler = handlerTracking
 ```
 ### Change diameter
 ``` swift
-  analogStick.diameter = 100 // set new diameter
+  joystick.diameter = 100 // set new diameter
 ```
 ### Change colors
 ``` swift
-  analogStick.stickColor = UIColor.redColor() // set red color to stick node
-  analogStick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
+  joystick.stickColor = UIColor.redColor() // set red color to stick node
+  joystick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
 ```
 ### Change images
 ``` swift
-  analogStick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
-  analogStick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
+  joystick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
+  joystick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
 ```
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016 Dmitriy Mitrophanskiy
+Copyright (c) 2015..2016 Dmitriy Mitrophanskiy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
