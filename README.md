@@ -20,7 +20,7 @@ let joystick = AnalogJoystick(diameter: 100)
 ```
 ***Substrate has 100px diameter, stick has 50px diameter***
 ``` swift
-let joystick =AnalogJoystick(diameters: (100, 50))
+let joystick = AnalogJoystick(diameters: (100, 50))
 ```
 ***init with 100px diameter.Substrate has blue color, stick has yellow color***
 ``` swift
@@ -81,25 +81,28 @@ let joystick =  🕹(diameter: 110) // let joystick = AnalogJoystick(diameter: 1
 ## Examples
 ### Create joystick
 ``` swift
-let joystick = AnalogStick(diameter: 120) // you can set images/color later
+let joystick = AnalogJoystick(diameter: 100) // you can set images/color later
 ```
 **or with images**
 ``` swift
-let joystick = AnalogStick(diameter: 120, substrateImage: UIImage(imageNamed: "yourImage"), stickImage: UIImage(imageNamed: "yourImage")))
+let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"), UIImage(named: "stick")))
 ```
 ### Tracking With Closure
 ``` swift
-  joystick.trackingHandler = { data in
-      //  something...
-  }
+joystick.trackingHandler = { jData in
+  // something...
+  // jData contains angular && velocity (jData.angular, jData.velocity)
+}
 ```
 **or**
 ``` swift
-  func handlerTracking(data: AnalogJoystickData) {
-    //  something...
-  }
-  
-  joystick.trackingHandler = handlerTracking
+func handlerTracking(data: AnalogJoystickData) {
+  self.appleNode?.zRotation = jData.angular
+  // something...
+  // jData contains angular && velocity (jData.angular, jData.velocity)
+}
+
+joystick.trackingHandler = handlerTracking
 ```
 ### Change diameter
 ``` swift
