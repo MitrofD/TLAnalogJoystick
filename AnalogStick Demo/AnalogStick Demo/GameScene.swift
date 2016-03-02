@@ -1,6 +1,5 @@
 //
 //  GameScene.swift
-//  stick test
 //
 //  Created by Dmitriy Mitrophanskiy on 28.09.14.
 //  Copyright (c) 2014 Dmitriy Mitrophanskiy. All rights reserved.
@@ -38,7 +37,7 @@ class GameScene: SKScene {
     }
     
     let moveAnalogStick =  🕹(diameter: 110)
-    let rotateAnalogStick = AnalogJoystick(diameter: 110)
+    let rotateAnalogStick = AnalogJoystick(diameter: 100)
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -47,18 +46,42 @@ class GameScene: SKScene {
         
         moveAnalogStick.position = CGPointMake(moveAnalogStick.radius + 15, moveAnalogStick.radius + 15)
         addChild(moveAnalogStick)
-        moveAnalogStick.trackingHandler = { jData in
-            
-            guard let aN = self.appleNode else { return }
-            aN.position = CGPointMake(aN.position.x + (jData.velocity.x * 0.12), aN.position.y + (jData.velocity.y * 0.12))
-        }
         
         rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - rotateAnalogStick.radius - 15, rotateAnalogStick.radius + 15)
         addChild(rotateAnalogStick)
+        
+        //MARK: Handlers begin
+        
+        moveAnalogStick.startHandler = {
+            
+            guard let aN = self.appleNode else { return }
+            aN.runAction(SKAction.sequence([SKAction.scaleTo(0.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+        }
+        
+        moveAnalogStick.trackingHandler = { data in
+            
+            guard let aN = self.appleNode else { return }
+            aN.position = CGPointMake(aN.position.x + (data.velocity.x * 0.12), aN.position.y + (data.velocity.y * 0.12))
+        }
+        
+        moveAnalogStick.stopHandler = {
+            
+            guard let aN = self.appleNode else { return }
+            aN.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5), SKAction.scaleTo(1, duration: 0.5)]))
+        }
+        
         rotateAnalogStick.trackingHandler = { jData in
             
             self.appleNode?.zRotation = jData.angular
         }
+        
+        rotateAnalogStick.stopHandler = {
+            
+            guard let aN = self.appleNode else { return }
+            aN.runAction(SKAction.rotateByAngle(3.6, duration: 0.5))
+        }
+        
+        //MARK: Handlers end
         
         let btnsOffset: CGFloat = 10
         let btnsOffsetHalf = btnsOffset / 2

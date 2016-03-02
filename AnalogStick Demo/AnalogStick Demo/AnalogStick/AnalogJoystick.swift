@@ -116,8 +116,9 @@ public class AnalogJoystickStick: AnalogJoystickComponent {
 typealias 🕹 = AnalogJoystick
 public class AnalogJoystick: SKNode {
     
-    typealias AnalogJoystickMoveHandler = ((AnalogJoystickData) -> ())
-    var trackingHandler: AnalogJoystickMoveHandler?
+    var trackingHandler: ((AnalogJoystickData) -> ())?
+    var startHandler: (() -> Void)?
+    var stopHandler: (() -> Void)?
     var substrate: AnalogJoystickSubstrate!
     var stick: AnalogJoystickStick!
     private var tracking = false
@@ -197,8 +198,11 @@ public class AnalogJoystick: SKNode {
     //MARK: - Overrides
     public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        guard let touch = touches.first else { return }
-        tracking = stick == nodeAtPoint(touch.locationInNode(self))
+        if let touch = touches.first where stick == nodeAtPoint(touch.locationInNode(self)) {
+            
+            tracking = true
+            startHandler?()
+        }
     }
     
     public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -242,5 +246,6 @@ public class AnalogJoystick: SKNode {
         moveToBack.timingMode = .EaseOut
         stick.runAction(moveToBack)
         data.reset()
+        stopHandler?();
     }
 }
