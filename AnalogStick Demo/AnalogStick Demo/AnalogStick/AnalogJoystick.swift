@@ -55,10 +55,9 @@ public class AnalogJoystickComponent: SKSpriteNode {
         self.image = image
         redrawTexture()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
@@ -96,6 +95,7 @@ public class AnalogJoystickComponent: SKSpriteNode {
         
         let needImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         texture = SKTexture(image: needImage)
     }
 }

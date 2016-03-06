@@ -25,6 +25,8 @@
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
 		8C2C1F9119DD76AA00510F35 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8C19DD76AA00510F35 /* AnalogJoystick.swift */; };
+		EE6E9F4A1C8CB1D600B1F608 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6E9F481C8CB1D600B1F608 /* gear.png */; };
+		EE6E9F4B1C8CB1D600B1F608 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6E9F491C8CB1D600B1F608 /* gear@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
 		8C2C1F8C19DD76AA00510F35 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
+		EE6E9F481C8CB1D600B1F608 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		EE6E9F491C8CB1D600B1F608 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 		8C073A941B70FC06005CE3AD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EE6E9F481C8CB1D600B1F608 /* gear.png */,
+				EE6E9F491C8CB1D600B1F608 /* gear@2x.png */,
 				8C073A951B70FC5A005CE3AD /* apple.png */,
 				8C073A961B70FC5A005CE3AD /* apple@2x.png */,
 				8C073A971B70FC5A005CE3AD /* jStick.png */,
@@ -254,10 +260,12 @@
 				8C073A9F1B70FC5A005CE3AD /* apple.png in Resources */,
 				8C2C1F7119DD762300510F35 /* Main.storyboard in Resources */,
 				8C073AA81B70FC5A005CE3AD /* plus@2x.png in Resources */,
+				EE6E9F4A1C8CB1D600B1F608 /* gear.png in Resources */,
 				8C073AA21B70FC5A005CE3AD /* jStick@2x.png in Resources */,
 				8C073AA51B70FC5A005CE3AD /* minus.png in Resources */,
 				8C073AA61B70FC5A005CE3AD /* minus@2x.png in Resources */,
 				8C073AA11B70FC5A005CE3AD /* jStick.png in Resources */,
+				EE6E9F4B1C8CB1D600B1F608 /* gear@2x.png in Resources */,
 				8C073AA71B70FC5A005CE3AD /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
