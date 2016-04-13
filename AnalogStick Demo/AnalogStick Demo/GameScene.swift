@@ -136,6 +136,8 @@ class GameScene: SKScene {
         
         setRandomStickColor()
         addApple(CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame)))
+        
+        view.multipleTouchEnabled = true
     }
     
     func addApple(position: CGPoint) {
@@ -188,7 +190,6 @@ class GameScene: SKScene {
     }
     
     func toOtherScene() {
-
         let newScene = GameScene()
         newScene.scaleMode = .ResizeFill
         let transition = SKTransition.moveInWithDirection(SKTransitionDirection.Right, duration: 1)

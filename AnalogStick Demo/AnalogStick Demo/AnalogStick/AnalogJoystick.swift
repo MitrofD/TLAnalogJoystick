@@ -164,7 +164,7 @@ public class AnalogJoystick: SKNode {
         addChild(stick)
         
         disabled = false
-        let velocityLoop = CADisplayLink(target: self, selector: Selector("listen"))
+        let velocityLoop = CADisplayLink(target: self, selector: #selector(listen))
         velocityLoop.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
     }
     
