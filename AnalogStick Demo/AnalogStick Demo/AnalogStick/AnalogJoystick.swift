@@ -10,12 +10,12 @@ import SpriteKit
 //MARK: AnalogJoystickData
 public struct AnalogJoystickData: CustomStringConvertible {
     
-    var velocity = CGPointZero
-    var angular = CGFloat(0)
+    var velocity = CGPoint.zero,
+    angular = CGFloat(0)
     
     mutating func reset() {
         
-        velocity = CGPointZero
+        velocity = CGPoint.zero
         angular = 0
     }
     
@@ -30,13 +30,13 @@ public class AnalogJoystickComponent: SKSpriteNode {
     
     private var kvoContext = UInt8(1)
     var borderWidth = CGFloat(0) { didSet { redrawTexture() } }
-    var borderColor = UIColor.blackColor() { didSet { redrawTexture() } }
+    var borderColor = UIColor.black() { didSet { redrawTexture() } }
     var image: UIImage? { didSet { redrawTexture() } }
     
     var diameter: CGFloat {
         
         get { return max(size.width, size.height) }
-        set { size = CGSizeMake(newValue, newValue) }
+        set { size = CGSize(width: newValue, height: newValue) }
     }
     
     var radius: CGFloat {
@@ -47,9 +47,9 @@ public class AnalogJoystickComponent: SKSpriteNode {
     
     init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) { // designated
         
-        super.init(texture: nil, color: color ?? UIColor.blackColor(), size: CGSize(width: diameter, height: diameter))
+        super.init(texture: nil, color: color ?? UIColor.black(), size: CGSize(width: diameter, height: diameter))
         
-        addObserver(self, forKeyPath: "color", options: NSKeyValueObservingOptions.Old, context: &kvoContext) // listen color changes
+        addObserver(self, forKeyPath: "color", options: NSKeyValueObservingOptions.old, context: &kvoContext) // listen color changes
         
         self.diameter = diameter
         self.image = image
@@ -65,7 +65,7 @@ public class AnalogJoystickComponent: SKSpriteNode {
         removeObserver(self, forKeyPath: "color")
     }
     
-    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    public override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         
         redrawTexture()
     }
@@ -79,10 +79,10 @@ public class AnalogJoystickComponent: SKSpriteNode {
             return
         }
         
-        let scale = UIScreen.mainScreen().scale
-        let needSize = CGSizeMake(self.diameter, self.diameter)
+        let scale = UIScreen.main().scale
+        let needSize = CGSize(width: self.diameter, height: self.diameter)
         UIGraphicsBeginImageContextWithOptions(needSize, false, scale)
-        let rectPath = UIBezierPath(ovalInRect: CGRect(origin: CGPointZero, size: needSize))
+        let rectPath = UIBezierPath(ovalIn: CGRect(origin: CGPoint.zero, size: needSize))
         rectPath.addClip()
         
         color.set()
@@ -90,10 +90,10 @@ public class AnalogJoystickComponent: SKSpriteNode {
         
         if let img = image {
             
-            img.drawInRect(CGRect(origin: CGPointZero, size: needSize), blendMode: .Normal, alpha: 1)
+            img.draw(in: CGRect(origin: CGPoint.zero, size: needSize), blendMode: .normal, alpha: 1)
         }
         
-        let needImage = UIGraphicsGetImageFromCurrentImageContext()
+        let needImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         texture = SKTexture(image: needImage)
@@ -126,9 +126,10 @@ public class AnalogJoystick: SKNode {
     
     var disabled: Bool {
         
-        get { return !userInteractionEnabled }
+        get { return !isUserInteractionEnabled }
         set {
-            userInteractionEnabled = !newValue
+            
+            isUserInteractionEnabled = !newValue
             if newValue {
                 resetStick()
             }
@@ -165,7 +166,7 @@ public class AnalogJoystick: SKNode {
         
         disabled = false
         let velocityLoop = CADisplayLink(target: self, selector: #selector(listen))
-        velocityLoop.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        velocityLoop.add(to: RunLoop.current(), forMode: RunLoopMode.commonModes.rawValue)
     }
     
     convenience init(diameters: (substrate: CGFloat, stick: CGFloat?), colors: (substrate: UIColor?, stick: UIColor?)? = nil, images: (substrate: UIImage?, stick: UIImage?)? = nil) {
@@ -196,38 +197,38 @@ public class AnalogJoystick: SKNode {
     }
     
     //MARK: - Overrides
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if let touch = touches.first where stick == nodeAtPoint(touch.locationInNode(self)) {
+        if let touch = touches.first where stick == atPoint(touch.location(in: self)) {
             
             tracking = true
             startHandler?()
         }
     }
     
-    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch: AnyObject in touches {
             
-            let location = touch.locationInNode(self)
+            let location = touch.location(in: self)
             
             guard tracking else { return }
             
             let maxDistantion = substrate.radius
             let realDistantion = sqrt(pow(location.x, 2) + pow(location.y, 2))
-            let needPosition = realDistantion <= maxDistantion ? CGPointMake(location.x, location.y) : CGPointMake(location.x / realDistantion * maxDistantion, location.y / realDistantion * maxDistantion)
+            let needPosition = realDistantion <= maxDistantion ? CGPoint(x: location.x, y: location.y) : CGPoint(x: location.x / realDistantion * maxDistantion, y: location.y / realDistantion * maxDistantion)
             
             stick.position = needPosition
             data = AnalogJoystickData(velocity: needPosition, angular: -atan2(needPosition.x, needPosition.y))
         }
     }
     
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         resetStick()
     }
     
-    public override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    public override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         
         resetStick()
     }
@@ -242,9 +243,9 @@ public class AnalogJoystick: SKNode {
     private func resetStick() {
         
         tracking = false
-        let moveToBack = SKAction.moveTo(CGPointZero, duration: NSTimeInterval(0.1))
-        moveToBack.timingMode = .EaseOut
-        stick.runAction(moveToBack)
+        let moveToBack = SKAction.move(to: CGPoint.zero, duration: TimeInterval(0.1))
+        moveToBack.timingMode = .easeOut
+        stick.run(moveToBack)
         data.reset()
         stopHandler?();
     }

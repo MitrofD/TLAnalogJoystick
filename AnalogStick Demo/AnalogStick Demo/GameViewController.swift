@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         // Configure the view.
         let scene = GameScene(size: self.view.bounds.size)
-        scene.backgroundColor = .whiteColor()
+        scene.backgroundColor = .white()
         if let skView = self.view as? SKView {
             
             skView.showsFPS = true
@@ -33,10 +33,10 @@ class GameViewController: UIViewController {
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return UIInterfaceOrientationMask.AllButUpsideDown
+        if UIDevice.current().userInterfaceIdiom == .phone {
+            return UIInterfaceOrientationMask.allButUpsideDown
         } else {
-            return UIInterfaceOrientationMask.All
+            return UIInterfaceOrientationMask.all
         }
     }
     
