@@ -24,7 +24,7 @@ let joystick = AnalogJoystick(diameters: (100, 50))
 ```
 ***init with 100px diameter.Substrate has blue color, stick has yellow color***
 ``` swift
-let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()))
+let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blue(), UIColor.yellow()))
 ```
 ***init with 100px diameter.Substrate has "substrate" image, stick has "stick" image***
 ``` swift
@@ -32,15 +32,15 @@ let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"
 ```
 ***init with 100px diameter.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
 ``` swift
-let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blueColor(), UIColor.yellowColor()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
+let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blue(), UIColor.yellow()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
 ```
 ***init with substrate && stick diameters.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
 ``` swift
-let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blueColor(), UIColor.yellowColor()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
+let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blue(), UIColor.yellow()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
 ```
 ***init with substrate && stick diameters.Substrate has blue color, stick has yellow color***
 ``` swift
-let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blueColor(), UIColor.yellowColor()))
+let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blue(), UIColor.yellow()))
 ```
 ***init with substrate && stick diameters.Substrate has "substrate" image, stick has "stick" image***
 ``` swift
@@ -110,8 +110,8 @@ joystick.trackingHandler = handlerTracking
 ```
 ### Change colors
 ``` swift
-  joystick.stickColor = UIColor.redColor() // set red color to stick node
-  joystick.substrateColor = UIColor.purpleColor() // set purple color to substrate node
+  joystick.stickColor = UIColor.red() // set red color to stick node
+  joystick.substrateColor = UIColor.purple() // set purple color to substrate node
 ```
 ### Change images
 ``` swift
