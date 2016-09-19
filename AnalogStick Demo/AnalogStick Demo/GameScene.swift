@@ -41,7 +41,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-        backgroundColor = UIColor.white()
+        backgroundColor = UIColor.white
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
         moveAnalogStick.position = CGPoint(x: moveAnalogStick.radius + 15, y: moveAnalogStick.radius + 15)
@@ -88,20 +88,20 @@ class GameScene: SKScene {
         let btnsOffsetHalf = btnsOffset / 2
         let joystickSizeLabel = SKLabelNode(text: "Joysticks Size:")
         joystickSizeLabel.fontSize = 20
-        joystickSizeLabel.fontColor = UIColor.black()
+        joystickSizeLabel.fontColor = UIColor.black
         joystickSizeLabel.horizontalAlignmentMode = .left
         joystickSizeLabel.verticalAlignmentMode = .top
         joystickSizeLabel.position = CGPoint(x: btnsOffset, y: selfHeight - btnsOffset)
         addChild(joystickSizeLabel)
         
-        joystickStickColorBtn.fontColor = UIColor.black()
+        joystickStickColorBtn.fontColor = UIColor.black
         joystickStickColorBtn.fontSize = 20
         joystickStickColorBtn.verticalAlignmentMode = .top
         joystickStickColorBtn.horizontalAlignmentMode = .left
         joystickStickColorBtn.position = CGPoint(x: btnsOffset, y: selfHeight - 40)
         addChild(joystickStickColorBtn)
         
-        joystickSubstrateColorBtn.fontColor = UIColor.black()
+        joystickSubstrateColorBtn.fontColor = UIColor.black
         joystickSubstrateColorBtn.fontSize = 20
         joystickSubstrateColorBtn.verticalAlignmentMode = .top
         joystickSubstrateColorBtn.horizontalAlignmentMode = .left
@@ -116,13 +116,13 @@ class GameScene: SKScene {
         jSizePlusSpriteNode.position = CGPoint(x: jSizeMinusSpriteNode.frame.maxX + btnsOffset, y: joystickSizeLabel.frame.midY)
         addChild(jSizePlusSpriteNode)
         
-        setJoystickStickImageBtn.fontColor = UIColor.black()
+        setJoystickStickImageBtn.fontColor = UIColor.black
         setJoystickStickImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .bottom
         setJoystickStickImageBtn.position = CGPoint(x: frame.midX, y: moveAnalogStick.position.y - btnsOffsetHalf)
         addChild(setJoystickStickImageBtn)
         
-        setJoystickSubstrateImageBtn.fontColor  = UIColor.black()
+        setJoystickSubstrateImageBtn.fontColor  = UIColor.black
         setJoystickSubstrateImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .top
         setJoystickSubstrateImageBtn.position = CGPoint(x: frame.midX, y: moveAnalogStick.position.y + btnsOffsetHalf)
@@ -206,7 +206,7 @@ class GameScene: SKScene {
         rotateAnalogStick.substrate.color = randomColor
     }
     
-    override func update(_ currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
     }
 }
