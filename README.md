@@ -1,7 +1,7 @@
 # AnalogJoystick.swift
 
 ### Preview
-![alt tag](https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif)
+![alt tag](https://www.dropbox.com/s/y1r10nrfkhyp0zz/AnalogStickPreview.gif?dl=0)
 
 ### Features
 - tracking joystick with closures
