@@ -4,12 +4,12 @@
 ![alt tag](https://lh3.googleusercontent.com/5fjvUhz-sGUh_ju5XZ8UlHDKfD6VXP8WuHgLL9AqZ5lw_vVR15hPsazjOdM8DlPZ4HygKOOjFdSGmJUJNBN9bsUFUVu8cF4gAQJeuILckOdCYVD9If8dSeEt4AUfsEm8wFrUbGlo0rtS8_wzCqfup-b55FBcaFLC4sSb3jA69elrv9CDrOZYUB8s068306anjhdfwL4omUP0pchNQsIPMFlUYbI0UDbHgo6TnqECJRRYqc3XL2Bs91gR4-r0-25kWniik3VfOrdBFQ0hWpl-XJWfoy09j8DEXsCKrsbxnUGINSjir3s2XL7T6GIKLuqbFcKQamFQcHt8hmSFZ60UWHKBMPqD-Y8p1hh-diHPfiiNfYVL0cMYQcsAeSHeE_bBIpP6qze-7wuJFAqSiWjPZ9NuymQDSMZUEZ-yb188U1m0N9FxtjCZUVwy40n3yzHwL6SaMYOseu8VVQCFJA0pceZVaLiRXuWC8-CW_e9P_KIPZOPiV-VX3iGbO9tkzkODBhdF7RIrsmD2TD7wBl6CB2D_r_o3GGPnnEreN7MTc8AD9UjhbCU3hQZ1hJmjMuwkG5JEq8y7VwDxRpyFrf9avcrFT9uaaiAzg5H2Es3fkYyBR0GCA_gX=w391-h220-no)
 
 ### Features
-- begin handler 
-- tracking handler
-- stop handler
-- set/change joystick diameter
-- set/change stick && substrate colors
-- set/change stick && substrate images
+- Begin handler 
+- Tracking handler
+- Stop handler
+- Set/change joystick diameter
+- Set/change stick && substrate colors
+- Set/change stick && substrate images
 
 ### Manual
 1. Just drop the **AnalogJoystick.swift** file into your project.
@@ -20,7 +20,7 @@
 ``` swift
 let joystick = AnalogJoystick(diameter: 100)
 // or
-let joystick = 🕹(diameter: 100) // typealias AnalogJoystick = 🕹
+let joystick = 🕹(diameter: 100)
 ```
 ***Substrate has 100px diameter, stick has 50px diameter***
 ``` swift
@@ -56,8 +56,8 @@ let joystick = AnalogJoystick(diameters: (100, 50), images: (UIImage(named: "sub
 init(substrate: AnalogJoystickSubstrate, stick: AnalogJoystickStick)
 ```
 **WHERE:**
-- **substrate** Substrate of joystick (AnalogJoystickSubstrate:AnalogJoystickComponent)
-- **stick** Stick of joystick (AnalogJoystickStick:AnalogJoystickComponent)
+- **substrate** - substrate of joystick (AnalogJoystickSubstrate:AnalogJoystickComponent)
+- **stick** - stick of joystick (AnalogJoystickStick:AnalogJoystickComponent)
 
 ### Convenience initializators:
 ``` swift
@@ -71,12 +71,12 @@ typealias AnalogJoystick = 🕹
 ```
 ## Example
 ``` swift
-let joystick = 🕹(diameter: 110) // let joystick = AnalogJoystick(diameter: 110)
+let joystick = 🕹(diameter: 110) // it's equal let joystick = AnalogJoystick(diameter: 110)
 ```
 
 ### Handlers
 - var beginHandler: (() -> Void)? // before move
-- var trackingHandler: ((AnalogJoystickData) -> ())? // 
+- var trackingHandler: ((AnalogJoystickData) -> ())? // when move
 - var stopHandler: (() -> Void)? // after move
 
 ### Computed Properties
