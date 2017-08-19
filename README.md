@@ -4,10 +4,12 @@
 ![alt tag](https://lh3.googleusercontent.com/5fjvUhz-sGUh_ju5XZ8UlHDKfD6VXP8WuHgLL9AqZ5lw_vVR15hPsazjOdM8DlPZ4HygKOOjFdSGmJUJNBN9bsUFUVu8cF4gAQJeuILckOdCYVD9If8dSeEt4AUfsEm8wFrUbGlo0rtS8_wzCqfup-b55FBcaFLC4sSb3jA69elrv9CDrOZYUB8s068306anjhdfwL4omUP0pchNQsIPMFlUYbI0UDbHgo6TnqECJRRYqc3XL2Bs91gR4-r0-25kWniik3VfOrdBFQ0hWpl-XJWfoy09j8DEXsCKrsbxnUGINSjir3s2XL7T6GIKLuqbFcKQamFQcHt8hmSFZ60UWHKBMPqD-Y8p1hh-diHPfiiNfYVL0cMYQcsAeSHeE_bBIpP6qze-7wuJFAqSiWjPZ9NuymQDSMZUEZ-yb188U1m0N9FxtjCZUVwy40n3yzHwL6SaMYOseu8VVQCFJA0pceZVaLiRXuWC8-CW_e9P_KIPZOPiV-VX3iGbO9tkzkODBhdF7RIrsmD2TD7wBl6CB2D_r_o3GGPnnEreN7MTc8AD9UjhbCU3hQZ1hJmjMuwkG5JEq8y7VwDxRpyFrf9avcrFT9uaaiAzg5H2Es3fkYyBR0GCA_gX=w391-h220-no)
 
 ### Features
-- tracking joystick with closures
+- begin handler 
+- tracking handler
+- stop handler
 - set/change joystick diameter
-- set/change stick & substrate colors
-- set/change stick & substrate images
+- set/change stick && substrate colors
+- set/change stick && substrate images
 
 ### Manual
 1. Just drop the **AnalogJoystick.swift** file into your project.
@@ -17,10 +19,12 @@
 ***init with 100px diameter.Colors & images you can change later***
 ``` swift
 let joystick = AnalogJoystick(diameter: 100)
+// or
+let joystick = 🕹(diameter: 100) // typealias AnalogJoystick = 🕹
 ```
 ***Substrate has 100px diameter, stick has 50px diameter***
 ``` swift
-let joystick = AnalogJoystick(diameters: (100, 50))
+let joystick = AnalogJoystick(diameters: (100, 50)) 
 ```
 ***init with 100px diameter.Substrate has blue color, stick has yellow color***
 ``` swift
@@ -67,11 +71,15 @@ typealias AnalogJoystick = 🕹
 ```
 ## Example
 ``` swift
-let joystick =  🕹(diameter: 110) // let joystick = AnalogJoystick(diameter: 110)
+let joystick = 🕹(diameter: 110) // let joystick = AnalogJoystick(diameter: 110)
 ```
 
+### Handlers
+- var beginHandler: (() -> Void)? // before move
+- var trackingHandler: ((AnalogJoystickData) -> ())? // 
+- var stopHandler: (() -> Void)? // after move
+
 ### Computed Properties
-- var trackingHandler: AnalogStickMoveHandler? (get/set)
 - var stickColor: UIColor (get/set)
 - var substrateColor: UIColor (get/set)
 - var stickImage: UIImage? (get/set)
@@ -89,20 +97,10 @@ let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"
 ```
 ### Tracking With Closure
 ``` swift
-joystick.trackingHandler = { jData in
+joystick.trackingHandler = { [unowned self] data in
   // something...
-  // jData contains angular && velocity (jData.angular, jData.velocity)
+  // jData contains angular && velocity (data.angular, data.velocity)
 }
-```
-**or**
-``` swift
-func handlerTracking(data: AnalogJoystickData) {
-  self.appleNode?.zRotation = jData.angular
-  // something...
-  // jData contains angular && velocity (jData.angular, jData.velocity)
-}
-
-joystick.trackingHandler = handlerTracking
 ```
 ### Change diameter
 ``` swift
@@ -110,13 +108,13 @@ joystick.trackingHandler = handlerTracking
 ```
 ### Change colors
 ``` swift
-  joystick.stickColor = UIColor.red() // set red color to stick node
-  joystick.substrateColor = UIColor.purple() // set purple color to substrate node
+  joystick.stick.color = UIColor.yellow() // set yellow color to stick node
+  joystick.substrate.color = UIColor.red() // set red color to substrate node
 ```
 ### Change images
 ``` swift
-  joystick.stickImage = UIImage(imageNamed: "yourStickImage") // set image to stick node
-  joystick.substrateColor = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
+  joystick.stick.image = UIImage(imageNamed: "yourStickImage") // set image to stick node
+  joystick.substrate.image = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
 ```
 ## License
 
