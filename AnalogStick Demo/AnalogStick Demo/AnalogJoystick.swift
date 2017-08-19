@@ -124,7 +124,7 @@ open class AnalogJoystickStick: AnalogJoystickComponent {
 //MARK: - AnalogJoystick
 open class AnalogJoystick: SKNode {
     var trackingHandler: ((AnalogJoystickData) -> ())?,
-    startHandler: (() -> Void)?,
+    beginHandler: (() -> Void)?,
     stopHandler: (() -> Void)?,
     substrate: AnalogJoystickSubstrate!,
     stick: AnalogJoystickStick!
@@ -208,7 +208,7 @@ open class AnalogJoystick: SKNode {
         
         if let touch = touches.first, stick == atPoint(touch.location(in: self)) {
             tracking = true
-            startHandler?()
+            beginHandler?()
         }
     }
     

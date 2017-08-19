@@ -47,7 +47,7 @@ class GameScene: SKScene {
         addChild(rotateAnalogStick)
         
         //MARK: Handlers begin
-        moveAnalogStick.startHandler = { [unowned self] in
+        moveAnalogStick.beginHandler = { [unowned self] in
             
             guard let aN = self.appleNode else {
                 return
