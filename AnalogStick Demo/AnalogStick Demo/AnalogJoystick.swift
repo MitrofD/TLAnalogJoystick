@@ -123,11 +123,11 @@ open class AnalogJoystickStick: AnalogJoystickComponent {
 
 //MARK: - AnalogJoystick
 open class AnalogJoystick: SKNode {
-    var trackingHandler: ((AnalogJoystickData) -> ())?,
-    beginHandler: (() -> Void)?,
-    stopHandler: (() -> Void)?,
-    substrate: AnalogJoystickSubstrate!,
-    stick: AnalogJoystickStick!
+    var trackingHandler: ((AnalogJoystickData) -> ())?
+    var beginHandler: (() -> Void)?
+    var stopHandler: (() -> Void)?
+    var substrate: AnalogJoystickSubstrate!
+    var stick: AnalogJoystickStick!
     private var tracking = false
     private(set) var data = AnalogJoystickData()
     
