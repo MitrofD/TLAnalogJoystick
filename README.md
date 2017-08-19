@@ -97,9 +97,17 @@ let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"
 ```
 ### Tracking With Closure
 ``` swift
+joystick.beginHandler = { [unowned self] in
+  // Something...
+}
+
 joystick.trackingHandler = { [unowned self] data in
-  // something...
-  // jData contains angular && velocity (data.angular, data.velocity)
+  // Something...
+  // data contains angular && velocity (data.angular, data.velocity)
+}
+
+joystick.stopHandler = { [unowned self] in
+  // Something...
 }
 ```
 ### Change diameter
