@@ -9,7 +9,6 @@ import SpriteKit
 
 //MARK: AnalogJoystickData
 public struct AnalogJoystickData: CustomStringConvertible {
-    
     var velocity = CGPoint.zero,
     angular = CGFloat(0)
     
@@ -25,30 +24,49 @@ public struct AnalogJoystickData: CustomStringConvertible {
 
 //MARK: - AnalogJoystickComponent
 open class AnalogJoystickComponent: SKSpriteNode {
-    
     private var kvoContext = UInt8(1)
-    var borderWidth = CGFloat(0) { didSet { redrawTexture() } }
-    var borderColor = UIColor.black { didSet { redrawTexture() } }
-    var image: UIImage? { didSet { redrawTexture() } }
+    var borderWidth = CGFloat(0) {
+        didSet {
+            redrawTexture()
+        }
+    }
+    
+    var borderColor = UIColor.black {
+        didSet {
+            redrawTexture()
+        }
+    }
+    
+    var image: UIImage? {
+        didSet {
+            redrawTexture()
+        }
+    }
     
     var diameter: CGFloat {
-        get { return max(size.width, size.height) }
-        set { size = CGSize(width: newValue, height: newValue) }
+        get {
+            return max(size.width, size.height)
+        }
+        
+        set(newSize) {
+            size = CGSize(width: newSize, height: newSize)
+        }
     }
     
     var radius: CGFloat {
+        get {
+            return diameter * 0.5
+        }
         
-        get { return diameter / 2 }
-        set { diameter = newValue * 2 }
+        set(newRadius) {
+            diameter = newRadius * 2
+        }
     }
     
-    init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) { // designated
-        
+    //MARK: - DESIGNATED
+    init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) {
         super.init(texture: nil, color: color ?? UIColor.black, size: CGSize(width: diameter, height: diameter))
-        
-        addObserver(self, forKeyPath: "color", options: NSKeyValueObservingOptions.old, context: &kvoContext) // listen color changes
-        
-        
+        addObserver(self, forKeyPath: "color", options: NSKeyValueObservingOptions.old, context: &kvoContext)
         self.diameter = diameter
         self.image = image
         redrawTexture()
@@ -69,22 +87,22 @@ open class AnalogJoystickComponent: SKSpriteNode {
     private func redrawTexture() {
         
         guard diameter > 0 else {
-            texture = nil
             print("Diameter should be more than zero")
+            texture = nil
             return
         }
         
-        let scale = UIScreen.main.scale,
-        needSize = CGSize(width: self.diameter, height: self.diameter)
+        let scale = UIScreen.main.scale
+        let needSize = CGSize(width: self.diameter, height: self.diameter)
         UIGraphicsBeginImageContextWithOptions(needSize, false, scale)
         let rectPath = UIBezierPath(ovalIn: CGRect(origin: CGPoint.zero, size: needSize))
         rectPath.addClip()
         
-        color.set()
-        rectPath.fill()
-        
         if let img = image {
             img.draw(in: CGRect(origin: CGPoint.zero, size: needSize), blendMode: .normal, alpha: 1)
+        } else {
+            color.set()
+            rectPath.fill()
         }
         
         let needImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -95,20 +113,16 @@ open class AnalogJoystickComponent: SKSpriteNode {
 
 //MARK: - AnalogJoystickSubstrate
 open class AnalogJoystickSubstrate: AnalogJoystickComponent {
-    
     // coming soon...
 }
 
 //MARK: - AnalogJoystickStick
 open class AnalogJoystickStick: AnalogJoystickComponent {
-    
     // coming soon...
 }
 
 //MARK: - AnalogJoystick
-typealias 🕹 = AnalogJoystick
 open class AnalogJoystick: SKNode {
-    
     var trackingHandler: ((AnalogJoystickData) -> ())?,
     startHandler: (() -> Void)?,
     stopHandler: (() -> Void)?,
@@ -118,39 +132,48 @@ open class AnalogJoystick: SKNode {
     private(set) var data = AnalogJoystickData()
     
     var disabled: Bool {
-        get { return !isUserInteractionEnabled }
-        set {
-            isUserInteractionEnabled = !newValue
-            if newValue {
+        get {
+            return !isUserInteractionEnabled
+        }
+        
+        set(isDisabled) {
+            isUserInteractionEnabled = !isDisabled
+            
+            if isDisabled {
                 resetStick()
             }
         }
     }
     
     var diameter: CGFloat {
-        get { return substrate.diameter }
-        set {
-            stick.diameter += newValue - diameter
-            substrate.diameter = newValue
+        get {
+            return substrate.diameter
+        }
+        
+        set(newDiameter) {
+            stick.diameter += newDiameter - diameter
+            substrate.diameter = newDiameter
         }
     }
     
     var radius: CGFloat {
-        get { return diameter / 2 }
-        set { diameter = newValue * 2 }
+        get {
+            return diameter * 0.5
+        }
+        
+        set(newRadius) {
+            diameter = newRadius * 2
+        }
     }
     
     init(substrate: AnalogJoystickSubstrate, stick: AnalogJoystickStick) {
         super.init()
-        
         self.substrate = substrate
         substrate.zPosition = 0
         addChild(substrate)
-        
         self.stick = stick
         stick.zPosition = substrate.zPosition + 1
         addChild(stick)
-        
         disabled = false
         let velocityLoop = CADisplayLink(target: self, selector: #selector(listen))
         velocityLoop.add(to: RunLoop.current, forMode: RunLoopMode(rawValue: RunLoopMode.commonModes.rawValue))
@@ -173,7 +196,8 @@ open class AnalogJoystick: SKNode {
         super.init(coder: aDecoder)
     }
     
-    func listen() {
+    @objc func listen() {
+        
         if tracking {
             trackingHandler?(data)
         }
@@ -228,3 +252,5 @@ open class AnalogJoystick: SKNode {
         stopHandler?();
     }
 }
+
+typealias 🕹 = AnalogJoystick
