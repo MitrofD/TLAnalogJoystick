@@ -1,7 +1,7 @@
 # AnalogJoystick.swift
 
 ### Preview
-![alt tag](https://dl.dropboxusercontent.com/u/25298147/AnalogStickPreview.gif)
+![alt tag](https://lh3.googleusercontent.com/CA6m58uss0oF8LYouDFYj4Dcye9sJ3K1YGpgQs4sUAEiV0W3nmV4boTQSjxa4zfQbJYb7Lmmu5IAHDXsgrXvs1GaXtKeBZbPeh_jJAOZcOQtHo5ABXUjOHeMdV2UyW0VbW_fZxNrkuZJPRw-zIflwFzbYzqBnsqoiXdr61zKSfs-SSh7TjDjTvKpd02BH5_Rmtw3hp2BtmkXx31ysqhXTJuWxF9sQMnOIihBh2lb7oNCaYKJ5VWU9U1ysKRfHlUV65frRxpYKbqC8mK7XIkqqp7am2Yt6LKzwYTApD0-mw6sCVPe-6ig5NAG8pWxVaRKehOtKtXsjuksa_bg1jQYwxS4PIHadAQa5XrWqX5hMoAQMjIPvktXQr5jqTs_ZvyoLfwecMSZGsul5vDZTbvKLQ3RFdaFwV9FuOY92pdlfdQYyXuMf5yLpcfCDLstzJGiVfzEYEyezOw82mu0RG4rAtyBr9zj7YDr0wRFDAnyzLr2Ao6OKXEOiCFtAQkOr9F5nUFU6IwdelGgTWOXMetoEyJGwa_pO7in7fhp8N1m5tAyDi8L6zSqLdjV9doEymyU5SKSoHuWy8YE9K2Xz1auiJ6xXHpeXuLJmBc-3UZx6atSola5Dqr5=w1280-h716-no)
 
 ### Features
 - tracking joystick with closures
@@ -122,7 +122,7 @@ joystick.trackingHandler = handlerTracking
 
 The MIT License (MIT)
 
-Copyright (c) 2015..2017 Dmitriy Mitrophanskiy
+Copyright (c) 2015...2017 Dmitriy Mitrophanskiy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
