@@ -15,12 +15,15 @@ class GameScene: SKScene {
     let setJoystickSubstrateImageBtn = SKLabelNode()
     let joystickStickColorBtn = SKLabelNode(text: "Sticks random color")
     let joystickSubstrateColorBtn = SKLabelNode(text: "Substrates random color")
+	
+	let moveJoystick = 🕹(withDiameter: 100)
+	let rotateJoystick = TLAnalogJoystick(withDiameter: 100)
     
     var joystickStickImageEnabled = true {
         didSet {
             let image = joystickStickImageEnabled ? UIImage(named: "jStick") : nil
-            moveAnalogStick.stick.image = image
-            rotateAnalogStick.stick.image = image
+            moveJoystick.handleImage = image
+            rotateJoystick.handleImage = image
             setJoystickStickImageBtn.text = "\(joystickStickImageEnabled ? "Remove" : "Set") stick image"
         }
     }
@@ -28,64 +31,73 @@ class GameScene: SKScene {
     var joystickSubstrateImageEnabled = true {
         didSet {
             let image = joystickSubstrateImageEnabled ? UIImage(named: "jSubstrate") : nil
-            moveAnalogStick.substrate.image = image
-            rotateAnalogStick.substrate.image = image
+            moveJoystick.baseImage = image
+            rotateJoystick.baseImage = image
             setJoystickSubstrateImageBtn.text = "\(joystickSubstrateImageEnabled ? "Remove" : "Set") substrate image"
         }
     }
     
-    let moveAnalogStick = 🕹(diameter: 110) // from Emoji
-    let rotateAnalogStick = AnalogJoystick(diameter: 100) // from Class
-    
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-        backgroundColor = UIColor.white
+        backgroundColor = .white
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-        moveAnalogStick.position = CGPoint(x: moveAnalogStick.radius + 15, y: moveAnalogStick.radius + 15)
-        addChild(moveAnalogStick)
-        rotateAnalogStick.position = CGPoint(x: self.frame.maxX - rotateAnalogStick.radius - 15, y:rotateAnalogStick.radius + 15)
-        addChild(rotateAnalogStick)
+		
+		moveJoystick.isMoveable = true
+		let moveJoystickHiddenArea = TLHiddenNodesArea(rect: CGRect(x: 0, y: 0, width: frame.midX, height: frame.height))
+		moveJoystickHiddenArea.addChild(moveJoystick)
+		addChild(moveJoystickHiddenArea)
+		
+		let rotateJoystickHiddenArea = TLHiddenNodesArea(rect: CGRect(x: frame.midX, y: 0, width: frame.midX, height: frame.height))
+		rotateJoystickHiddenArea.addChild(rotateJoystick)
+		addChild(rotateJoystickHiddenArea)
         
         //MARK: Handlers begin
-        moveAnalogStick.beginHandler = { [unowned self] in
-            
-            guard let aN = self.appleNode else {
-                return
-            }
-            
-            aN.run(SKAction.sequence([SKAction.scale(to: 0.5, duration: 0.5), SKAction.scale(to: 1, duration: 0.5)]))
-        }
-        
-        moveAnalogStick.trackingHandler = { [unowned self] data in
-            
-            guard let aN = self.appleNode else {
-                return
-            }
-            
-            aN.position = CGPoint(x: aN.position.x + (data.velocity.x * 0.12), y: aN.position.y + (data.velocity.y * 0.12))
-        }
-        
-        moveAnalogStick.stopHandler = { [unowned self] in
-            
-            guard let aN = self.appleNode else {
-                return
-            }
-            
-            aN.run(SKAction.sequence([SKAction.scale(to: 1.5, duration: 0.5), SKAction.scale(to: 1, duration: 0.5)]))
-        }
-        
-        rotateAnalogStick.trackingHandler = { [unowned self] jData in
-            self.appleNode?.zRotation = jData.angular
-        }
-        
-        rotateAnalogStick.stopHandler =  { [unowned self] in
-            
-            guard let aN = self.appleNode else {
-                return
-            }
-            
-            aN.run(SKAction.rotate(byAngle: 3.6, duration: 0.5))
-        }
+		moveJoystick.on(.begin) { [unowned self] _ in
+			let actions = [
+				SKAction.scale(to: 0.5, duration: 0.5),
+				SKAction.scale(to: 1, duration: 0.5)
+			]
+
+			self.appleNode?.run(SKAction.sequence(actions))
+		}
+		
+		moveJoystick.on(.move) { [unowned self] joystick in
+			guard let appleNode = self.appleNode else {
+				return
+			}
+			
+			let pVelocity = joystick.velocity;
+			let speed = CGFloat(0.12)
+			
+			appleNode.position = CGPoint(x: appleNode.position.x + (pVelocity.x * speed), y: appleNode.position.y + (pVelocity.y * speed))
+		}
+		
+		moveJoystick.on(.end) { [unowned self] _ in
+			let actions = [
+				SKAction.scale(to: 1.5, duration: 0.5),
+				SKAction.scale(to: 1, duration: 0.5)
+			]
+
+			self.appleNode?.run(SKAction.sequence(actions))
+		}
+		
+		rotateJoystick.on(.move) { [unowned self] joystick in
+			guard let appleNode = self.appleNode else {
+				return
+			}
+			
+			let pVelocity = joystick.velocity;
+			let speed = CGFloat(0.12)
+			
+			appleNode.position = CGPoint(x: appleNode.position.x + (pVelocity.x * speed), y: appleNode.position.y + (pVelocity.y * speed))
+			/*
+			self.appleNode?.zRotation = joystick.angular
+			*/
+		}
+		
+		rotateJoystick.on(.end) { [unowned self] _ in
+			self.appleNode?.run(SKAction.rotate(byAngle: 3.6, duration: 0.5))
+		}
         
         //MARK: Handlers end
         let selfHeight = frame.height
@@ -124,18 +136,17 @@ class GameScene: SKScene {
         setJoystickStickImageBtn.fontColor = UIColor.black
         setJoystickStickImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .bottom
-        setJoystickStickImageBtn.position = CGPoint(x: frame.midX, y: moveAnalogStick.position.y - btnsOffsetHalf)
+        setJoystickStickImageBtn.position = CGPoint(x: frame.midX, y: moveJoystick.position.y - btnsOffsetHalf)
         addChild(setJoystickStickImageBtn)
         
         setJoystickSubstrateImageBtn.fontColor  = UIColor.black
         setJoystickSubstrateImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .top
-        setJoystickSubstrateImageBtn.position = CGPoint(x: frame.midX, y: moveAnalogStick.position.y + btnsOffsetHalf)
+        setJoystickSubstrateImageBtn.position = CGPoint(x: frame.midX, y: moveJoystick.position.y + btnsOffsetHalf)
         addChild(setJoystickSubstrateImageBtn)
-        joystickStickImageEnabled = true
+		joystickStickImageEnabled = true
         joystickSubstrateImageEnabled = true
-        
-        setRandomStickColor()
+
         addApple(CGPoint(x: frame.midX, y: frame.midY))
 
         view.isMultipleTouchEnabled = true
@@ -164,11 +175,11 @@ class GameScene: SKScene {
             
             switch node {
             case jSizePlusSpriteNode:
-                moveAnalogStick.diameter += 1
-                rotateAnalogStick.diameter += 1
+                moveJoystick.diameter += 10
+                rotateJoystick.diameter += 10
             case jSizeMinusSpriteNode:
-                moveAnalogStick.diameter -= 1
-                rotateAnalogStick.diameter -= 1
+                moveJoystick.diameter -= 10
+                rotateJoystick.diameter -= 10
             case setJoystickStickImageBtn:
                 joystickStickImageEnabled = !joystickStickImageEnabled
             case setJoystickSubstrateImageBtn:
@@ -185,14 +196,14 @@ class GameScene: SKScene {
     
     func setRandomStickColor() {
         let randomColor = UIColor.random()
-        moveAnalogStick.stick.color = randomColor
-        rotateAnalogStick.stick.color = randomColor
+        moveJoystick.handleColor = randomColor
+        rotateJoystick.handleColor = randomColor
     }
     
     func setRandomSubstrateColor() {
         let randomColor = UIColor.random()
-        moveAnalogStick.substrate.color = randomColor
-        rotateAnalogStick.substrate.color = randomColor
+        moveJoystick.baseColor = randomColor
+        rotateJoystick.baseColor = randomColor
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -201,7 +212,6 @@ class GameScene: SKScene {
 }
 
 extension UIColor {
-    
     static func random() -> UIColor {
         return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1)
     }

@@ -18,6 +18,7 @@
 		8C2C1F7319DD762300510F35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7219DD762300510F35 /* Images.xcassets */; };
 		8C2C1F7619DD762300510F35 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C1F7419DD762300510F35 /* LaunchScreen.xib */; };
 		8C2C1F8219DD762300510F35 /* AnalogStick_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */; };
+		8C8D0972222AF84000853F90 /* TLHiddenNodesArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D0971222AF84000853F90 /* TLHiddenNodesArea.swift */; };
 		8C9184C41F471B340093B5F3 /* jStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9184C11F471AA20093B5F3 /* jStick.png */; };
 		8C9184C51F471B340093B5F3 /* jStick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9184C31F471AA20093B5F3 /* jStick@2x.png */; };
 		8C9184C61F471B340093B5F3 /* jSubstrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9184C01F471AA20093B5F3 /* jSubstrate.png */; };
@@ -26,7 +27,7 @@
 		8C9184CB1F4720820093B5F3 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C9184C91F47207E0093B5F3 /* apple@2x.png */; };
 		EE6E9F4A1C8CB1D600B1F608 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6E9F481C8CB1D600B1F608 /* gear.png */; };
 		EE6E9F4B1C8CB1D600B1F608 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6E9F491C8CB1D600B1F608 /* gear@2x.png */; };
-		EECFA6FD1D909BC8002FD501 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECFA6FC1D909BC8002FD501 /* AnalogJoystick.swift */; };
+		EECFA6FD1D909BC8002FD501 /* TLAnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECFA6FC1D909BC8002FD501 /* TLAnalogJoystick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8C2C1F7B19DD762300510F35 /* AnalogStick DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnalogStick DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C1F8019DD762300510F35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2C1F8119DD762300510F35 /* AnalogStick_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogStick_DemoTests.swift; sourceTree = "<group>"; };
+		8C8D0971222AF84000853F90 /* TLHiddenNodesArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLHiddenNodesArea.swift; sourceTree = "<group>"; };
 		8C9184C01F471AA20093B5F3 /* jSubstrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jSubstrate.png; sourceTree = "<group>"; };
 		8C9184C11F471AA20093B5F3 /* jStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jStick.png; sourceTree = "<group>"; };
 		8C9184C21F471AA20093B5F3 /* jSubstrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jSubstrate@2x.png"; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		8C9184C91F47207E0093B5F3 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
 		EE6E9F481C8CB1D600B1F608 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		EE6E9F491C8CB1D600B1F608 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
-		EECFA6FC1D909BC8002FD501 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
+		EECFA6FC1D909BC8002FD501 /* TLAnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAnalogJoystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				8C2C1F6719DD762300510F35 /* AppDelegate.swift */,
-				EECFA6FC1D909BC8002FD501 /* AnalogJoystick.swift */,
+				EECFA6FC1D909BC8002FD501 /* TLAnalogJoystick.swift */,
+				8C8D0971222AF84000853F90 /* TLHiddenNodesArea.swift */,
 				8C2C1F6B19DD762300510F35 /* GameScene.swift */,
 				8C2C1F6D19DD762300510F35 /* GameViewController.swift */,
 				8C2C1F6F19DD762300510F35 /* Main.storyboard */,
@@ -207,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Dmitriy Mitrophanskiy";
 				TargetAttributes = {
 					8C2C1F6119DD762300510F35 = {
@@ -280,9 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2C1F6C19DD762300510F35 /* GameScene.swift in Sources */,
-				EECFA6FD1D909BC8002FD501 /* AnalogJoystick.swift in Sources */,
+				EECFA6FD1D909BC8002FD501 /* TLAnalogJoystick.swift in Sources */,
 				8C2C1F6E19DD762300510F35 /* GameViewController.swift in Sources */,
 				8C2C1F6819DD762300510F35 /* AppDelegate.swift in Sources */,
+				8C8D0972222AF84000853F90 /* TLHiddenNodesArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,12 +340,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -389,12 +395,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
