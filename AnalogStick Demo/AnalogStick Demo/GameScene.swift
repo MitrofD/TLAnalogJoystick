@@ -126,17 +126,19 @@ class GameScene: SKScene {
         jSizePlusSpriteNode.anchorPoint = CGPoint(x: 0, y: 0.5)
         jSizePlusSpriteNode.position = CGPoint(x: jSizeMinusSpriteNode.frame.maxX + btnsOffset, y: joystickSizeLabel.frame.midY)
         addChild(jSizePlusSpriteNode)
+		
+		let startLabelY = CGFloat(40)
         
         setJoystickStickImageBtn.fontColor = UIColor.black
         setJoystickStickImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .bottom
-        setJoystickStickImageBtn.position = CGPoint(x: frame.midX, y: moveJoystick.position.y - btnsOffsetHalf)
+        setJoystickStickImageBtn.position = CGPoint(x: frame.midX, y: startLabelY - btnsOffsetHalf)
         addChild(setJoystickStickImageBtn)
         
         setJoystickSubstrateImageBtn.fontColor  = UIColor.black
         setJoystickSubstrateImageBtn.fontSize = 20
         setJoystickStickImageBtn.verticalAlignmentMode = .top
-        setJoystickSubstrateImageBtn.position = CGPoint(x: frame.midX, y: moveJoystick.position.y + btnsOffsetHalf)
+        setJoystickSubstrateImageBtn.position = CGPoint(x: frame.midX, y: startLabelY + btnsOffsetHalf)
         addChild(setJoystickSubstrateImageBtn)
 		joystickStickImageEnabled = true
         joystickSubstrateImageEnabled = true
