@@ -32,6 +32,74 @@ fileprivate func getDiameter(fromDiameter diameter: CGFloat, withRatio ratio: CG
 	return diameter * abs(ratio)
 }
 
+// MARK: - TLAnalogJoystickHiddenArea
+open class TLAnalogJoystickHiddenArea: SKShapeNode {
+	private var currJoystick: TLAnalogJoystick?
+	
+	var joystick: TLAnalogJoystick? {
+		get {
+			return currJoystick
+		}
+		
+		set {
+			if let currJoystick = self.currJoystick {
+				removeChildren(in: [currJoystick])
+			}
+			
+			currJoystick = newValue
+			
+			if let currJoystick = self.currJoystick {
+				isUserInteractionEnabled = true
+				cancelNode(currJoystick)
+				addChild(currJoystick)
+			} else {
+				isUserInteractionEnabled = false
+			}
+		}
+	}
+	
+	private func cancelNode(_ node: SKNode) {
+		node.isHidden = true
+	}
+	
+	open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		guard let currJoystick = self.currJoystick else {
+			return
+		}
+		
+		let firstTouch = touches.first!
+		currJoystick.position = firstTouch.location(in: self)
+		currJoystick.isHidden = false
+		currJoystick.touchesBegan(touches, with: event)
+	}
+	
+	open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		guard let currJoystick = self.currJoystick else {
+			return
+		}
+		
+		currJoystick.touchesMoved(touches, with: event)
+	}
+	
+	open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		guard let currJoystick = self.currJoystick else {
+			return
+		}
+		
+		currJoystick.touchesEnded(touches, with: event)
+		cancelNode(currJoystick)
+	}
+	
+	open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+		guard let currJoystick = self.currJoystick else {
+			return
+		}
+		
+		currJoystick.touchesCancelled(touches, with: event)
+		cancelNode(currJoystick)
+	}
+}
+
 //MARK: - TLAnalogJoystickComponent
 open class TLAnalogJoystickComponent: SKSpriteNode {
 	private var kvoContext = UInt8(1)
@@ -260,8 +328,8 @@ open class TLAnalogJoystick: SKNode {
 		
 		disabled = false
 		displayLink = CADisplayLink(target: self, selector: #selector(listen))
-
 		handle.zPosition = base.zPosition + 1
+
 		addChild(base)
 		addChild(handle)
     }

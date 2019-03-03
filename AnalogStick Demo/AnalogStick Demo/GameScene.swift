@@ -41,14 +41,14 @@ class GameScene: SKScene {
         /* Setup your scene here */
         backgroundColor = .white
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-		
+
+		let moveJoystickHiddenArea = TLAnalogJoystickHiddenArea(rect: CGRect(x: 0, y: 0, width: frame.midX, height: frame.height))
+		moveJoystickHiddenArea.joystick = moveJoystick
 		moveJoystick.isMoveable = true
-		let moveJoystickHiddenArea = TLHiddenNodesArea(rect: CGRect(x: 0, y: 0, width: frame.midX, height: frame.height))
-		moveJoystickHiddenArea.addChild(moveJoystick)
 		addChild(moveJoystickHiddenArea)
 		
-		let rotateJoystickHiddenArea = TLHiddenNodesArea(rect: CGRect(x: frame.midX, y: 0, width: frame.midX, height: frame.height))
-		rotateJoystickHiddenArea.addChild(rotateJoystick)
+		let rotateJoystickHiddenArea = TLAnalogJoystickHiddenArea(rect: CGRect(x: frame.midX, y: 0, width: frame.midX, height: frame.height))
+		rotateJoystickHiddenArea.joystick = rotateJoystick
 		addChild(rotateJoystickHiddenArea)
         
         //MARK: Handlers begin
@@ -85,14 +85,8 @@ class GameScene: SKScene {
 			guard let appleNode = self.appleNode else {
 				return
 			}
-			
-			let pVelocity = joystick.velocity;
-			let speed = CGFloat(0.12)
-			
-			appleNode.position = CGPoint(x: appleNode.position.x + (pVelocity.x * speed), y: appleNode.position.y + (pVelocity.y * speed))
-			/*
-			self.appleNode?.zRotation = joystick.angular
-			*/
+
+			appleNode.zRotation = joystick.angular
 		}
 		
 		rotateJoystick.on(.end) { [unowned self] _ in
