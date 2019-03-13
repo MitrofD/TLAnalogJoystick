@@ -149,7 +149,6 @@ class GameScene: SKScene {
     }
     
     func addApple(_ position: CGPoint) {
-        
         guard let appleImage = UIImage(named: "apple") else {
             return
         }
