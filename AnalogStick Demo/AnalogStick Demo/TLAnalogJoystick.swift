@@ -208,16 +208,24 @@ open class TLAnalogJoystick: SKNode {
 				return
 			}
 
-			if tracking {
-				displayLink.add(to: .current, forMode: .commonModes)
-				runEvent(.begin)
-			} else {
-				displayLink.remove(from: .current, forMode: .commonModes)
-				runEvent(.end)
-				let resetAction = SKAction.move(to: .zero, duration: 0.1)
-				resetAction.timingMode = .easeOut
-				handle.run(resetAction)
-			}
+            if tracking {
+                #if swift(>=4.2)
+                displayLink.add(to: .current, forMode: RunLoop.Mode.common)
+                #else
+                displayLink.add(to: .current, forMode: .commonModes)
+                #endif
+                runEvent(.begin)
+            } else {
+                #if swift(>=4.2)
+                displayLink.remove(from: .current, forMode: RunLoop.Mode.common)
+                #else
+                displayLink.remove(from: .current, forMode: .commonModes)
+                #endif
+                runEvent(.end)
+                let resetAction = SKAction.move(to: .zero, duration: 0.1)
+                resetAction.timingMode = .easeOut
+                handle.run(resetAction)
+            }
 		}
 	}
 	
