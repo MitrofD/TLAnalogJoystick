@@ -75,15 +75,3 @@ moveJoystick.on(.move) { joystick in
 rotateJoystick.on(.move) { joystick in
     appleNode.zRotation = joystick.angular
 }
-
-### AnalogJoystickHiddenArea
-
-A touch area that automatically shows and hides the joystick when touched.
-
-**Usage Example:**
-
-```swift
-let moveJoystickArea = AnalogJoystickHiddenArea(rect: CGRect(x: 0, y: 0, width: frame.midX, height: frame.height))
-moveJoystickArea.joystick = moveJoystick
-moveJoystickArea.isUserInteractionEnabled = true
-addChild(moveJoystickArea)
