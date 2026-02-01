@@ -1,149 +1,77 @@
-# AnalogJoystick.swift
+# AnalogJoystick-SpriteKit
 
-### Preview
-![Analog joustick](https://github.com/MitrophD/Swift-SpriteKit-Analog-Stick/blob/master/preview.gif?raw=true)
+[![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org)  
+[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20iPadOS-lightgrey.svg)](https://developer.apple.com/ios/)
 
-### Features
-- Begin handler 
-- Tracking handler
-- Stop handler
-- Set/change joystick diameter
-- Set/change stick && substrate colors
-- Set/change stick && substrate images
+**AnalogJoystick-SpriteKit** is a fully customizable virtual joystick for SpriteKit games, designed for responsive touch controls and smooth interactions.  
 
-### Manual
-1. Just drop the **AnalogJoystick.swift** file into your project.
-2. That's it!
+It supports:
 
-### Init examples:
-***init with 100px diameter.Colors & images you can change later***
-``` swift
-let joystick = AnalogJoystick(diameter: 100)
-// or
-let joystick = 🕹(diameter: 100)
-```
-***Substrate has 100px diameter, stick has 50px diameter***
-``` swift
-let joystick = AnalogJoystick(diameters: (100, 50)) 
-```
-***init with 100px diameter.Substrate has blue color, stick has yellow color***
-``` swift
-let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blue(), UIColor.yellow()))
-```
-***init with 100px diameter.Substrate has "substrate" image, stick has "stick" image***
-``` swift
-let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"), UIImage(named: "stick")))
-```
-***init with 100px diameter.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
-``` swift
-let joystick = AnalogJoystick(diameter: 100, colors: (UIColor.blue(), UIColor.yellow()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
-```
-***init with substrate && stick diameters.Substrate has blue color && "substrate" image, stick has yellow color && "stick" image***
-``` swift
-let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blue(), UIColor.yellow()), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
-```
-***init with substrate && stick diameters.Substrate has blue color, stick has yellow color***
-``` swift
-let joystick = AnalogJoystick(diameters: (100, 50), colors: (UIColor.blue(), UIColor.yellow()))
-```
-***init with substrate && stick diameters.Substrate has "substrate" image, stick has "stick" image***
-``` swift
-let joystick = AnalogJoystick(diameters: (100, 50), images: (UIImage(named: "substrate"), UIImage(named: "stick")))
-```
+- Multi-touch input via `AnalogJoystickHiddenArea`
+- Configurable size, colors, and images for joystick handle and base
+- Dead zone with smooth adaptive sensitivity
+- Event handling for `.begin`, `.move`, and `.end`
+- Real-time object movement and rotation
+- `isMoveable` feature to allow joystick repositioning on the screen
 
-### Designated initializator
-``` swift
-init(substrate: AnalogJoystickSubstrate, stick: AnalogJoystickStick)
-```
-**WHERE:**
-- **substrate** - substrate of joystick (AnalogJoystickSubstrate:AnalogJoystickComponent)
-- **stick** - stick of joystick (AnalogJoystickStick:AnalogJoystickComponent)
+---
 
-### Convenience initializators:
-``` swift
-convenience init(diameters: (substrate: CGFloat, stick: CGFloat?), colors: (substrate: UIColor?, stick: UIColor?)? = nil, images: (substrate: UIImage?, stick: UIImage?)? = nil)
-convenience init(diameter: CGFloat, colors: (substrate: UIColor?, stick: UIColor?)? = nil, images: (substrate: UIImage?, stick: UIImage?)? = nil)
-```
+## Installation
 
-### Typealias
-``` swift
-typealias AnalogJoystick = 🕹
-```
-## Example
-``` swift
-let joystick = 🕹(diameter: 110) // it's equal let joystick = AnalogJoystick(diameter: 110)
-```
+Simply add the `AnalogJoystick.swift` file to your SpriteKit project.
 
-### Handlers
-- var beginHandler: (() -> Void)? // before move
-- var trackingHandler: ((AnalogJoystickData) -> ())? // when move
-- var stopHandler: (() -> Void)? // after move
+- Compatible with iOS 13+
+- Written in Swift 5
+- No external dependencies
 
-### Computed Properties
-- var stickColor: UIColor (get/set)
-- var substrateColor: UIColor (get/set)
-- var stickImage: UIImage? (get/set)
-- var substrateImage: UIImage? (get/set)
-- var diameter: CGFloat (get/set)
+---
 
-## Examples
-### Create joystick
-``` swift
-let joystick = AnalogJoystick(diameter: 100) // you can set images/color later
-```
-**or with images**
-``` swift
-let joystick = AnalogJoystick(diameter: 100, images: (UIImage(named: "substrate"), UIImage(named: "stick")))
-```
-### Tracking With Closure
-``` swift
-joystick.beginHandler = { [unowned self] in
-  // Something...
+## Main Classes
+
+### AnalogJoystickComponent
+
+Represents a joystick part (handle or base).
+
+**Properties:**
+
+- `diameter: CGFloat` – the diameter of the joystick part
+- `radius: CGFloat` – the radius
+- `color: UIColor` – fill color
+- `image: UIImage?` – optional custom image
+
+---
+
+### AnalogJoystick
+
+The main joystick class.
+
+**Properties:**
+
+- `deadZone: CGFloat` – ignore small movements inside this threshold (default 0.05)
+- `velocityExponent: CGFloat` – controls sensitivity curve (default 1.5)
+- `isMoveable: Bool` – allow dragging the joystick around the screen
+- `handleRatio: CGFloat` – size ratio of handle relative to base
+- `velocity: CGPoint` – current velocity of the joystick
+- `angular: CGFloat` – current angle in radians
+- `disabled: Bool` – enable/disable joystick
+
+**Events:**
+
+- `.begin` – triggered when touch begins
+- `.move` – triggered on movement
+- `.end` – triggered when touch ends
+
+**Example Usage:**
+
+```swift
+let moveJoystick = AnalogJoystick(withDiameter: 100)
+let rotateJoystick = AnalogJoystick(withDiameter: 100)
+
+moveJoystick.on(.move) { joystick in
+    appleNode.position.x += joystick.velocity.x * 5
+    appleNode.position.y += joystick.velocity.y * 5
 }
 
-joystick.trackingHandler = { [unowned self] data in
-  // Something...
-  // data contains angular && velocity (data.angular, data.velocity)
+rotateJoystick.on(.move) { joystick in
+    appleNode.zRotation = joystick.angular
 }
-
-joystick.stopHandler = { [unowned self] in
-  // Something...
-}
-```
-### Change diameter
-``` swift
-  joystick.diameter = 100 // set new diameter
-```
-### Change colors
-``` swift
-  joystick.stick.color = UIColor.yellow() // set yellow color to stick node
-  joystick.substrate.color = UIColor.red() // set red color to substrate node
-```
-### Change images
-``` swift
-  joystick.stick.image = UIImage(imageNamed: "yourStickImage") // set image to stick node
-  joystick.substrate.image = UIImage(imageNamed: "yourSubstrateImage") // set image to substrate node
-```
-## License
-
-The MIT License (MIT)
-
-Copyright (c) 2015...2023 Dmitriy Mitrophanskiy
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
