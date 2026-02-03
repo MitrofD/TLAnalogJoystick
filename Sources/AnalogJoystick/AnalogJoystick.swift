@@ -115,7 +115,7 @@ open class AnalogJoystickComponent: SKSpriteNode {
     
     // MARK: - DESIGNATED
 
-    init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) {
+    public init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) {
         let pureColor = color ?? UIColor.black
         let size = CGSize(width: diameter, height: diameter)
         super.init(texture: nil, color: pureColor, size: size)
@@ -167,8 +167,8 @@ open class AnalogJoystick: SKNode {
     private var activeTouch: UITouch?
     private var pHandleRatio: CGFloat
     private var displayLink: CADisplayLink!
-    private var handlers = [EventType: EventHandlersMap]()
-    private var handlerEventById = [EventHandlerId: EventType]()
+    private var handlers = [EventType: [String: (AnalogJoystick) -> Void]]()
+    private var handlerEventById = [String: EventType]()
     
     public enum EventType {
         case begin
@@ -176,11 +176,7 @@ open class AnalogJoystick: SKNode {
         case end
     }
     
-    public typealias EventHandlerId = String
-    public typealias EventHandler = (AnalogJoystick) -> Void
-    public typealias EventHandlersMap = [EventHandlerId: EventHandler]
-    
-    private static let getHandlerId: () -> EventHandlerId = {
+    private static let getHandlerId: () -> String = {
         var counter = 0
         
         return {
@@ -351,7 +347,7 @@ open class AnalogJoystick: SKNode {
         addChild(handle)
     }
     
-    convenience init(withDiameter diameter: CGFloat, handleRatio: CGFloat = 0.6) {
+    public convenience init(withDiameter diameter: CGFloat, handleRatio: CGFloat = 0.6) {
         let base = AnalogJoystickComponent(diameter: diameter, color: .gray)
         let handleDiameter = getDiameter(fromDiameter: diameter, withRatio: handleRatio)
         let handle = AnalogJoystickComponent(diameter: handleDiameter, color: .black)
@@ -373,8 +369,8 @@ open class AnalogJoystick: SKNode {
         displayLink?.invalidate()
     }
     
-    private func getEventHandlers(forType type: EventType) -> EventHandlersMap {
-        handlers[type] ?? EventHandlersMap()
+    private func getEventHandlers(forType type: EventType) -> [String: (AnalogJoystick) -> Void] {
+        handlers[type] ?? [String: (AnalogJoystick) -> Void]()
     }
     
     private func runEvent(_ type: EventType) {
@@ -386,7 +382,7 @@ open class AnalogJoystick: SKNode {
     }
     
     @discardableResult
-    public func on(_ event: EventType, _ handler: @escaping EventHandler) -> EventHandlerId {
+    public func on(_ event: EventType, _ handler: @escaping (AnalogJoystick) -> Void) -> String {
         let handlerId = Self.getHandlerId()
         var currHandlers = getEventHandlers(forType: event)
         currHandlers[handlerId] = handler
@@ -395,7 +391,7 @@ open class AnalogJoystick: SKNode {
         return handlerId
     }
     
-    public func off(handlerID: EventHandlerId) {
+    public func off(handlerID: String) {
         if let event = handlerEventById[handlerID] {
             var currHandlers = getEventHandlers(forType: event)
             currHandlers.removeValue(forKey: handlerID)
