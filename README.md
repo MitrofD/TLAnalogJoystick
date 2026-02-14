@@ -2,26 +2,32 @@
 
 A powerful and flexible analog joystick control for SpriteKit games on iOS.
 
+## 📹 Demo
+
+See AnalogJoystick in action:
+
+[![AnalogJoystick Demo](preview.png)](https://youtu.be/gxPmRu_mwlo)
+
 ## Features
 
-- 🎮 Smooth analog control with customizable dead zones
-- 🎨 Customizable appearance (colors, images, sizes)
-- 📍 Fixed or moveable joystick positioning
-- 👆 Multi-touch support
-- 🔄 Event-driven architecture
-- 🎯 Hidden area support for dynamic joystick placement
-- ⚡ Velocity and angular position tracking
-- 🧩 Easy integration as Swift Package
+* 🎮 Smooth analog control with customizable dead zones
+* 🎨 Customizable appearance (colors, images, sizes)
+* 📍 Fixed or moveable joystick positioning
+* 👆 Multi-touch support
+* 🔄 Event-driven architecture
+* 🎯 Hidden area support for dynamic joystick placement
+* ⚡ Velocity and angular position tracking
+* 🧩 Easy integration as Swift Package
 
 ## Requirements
 
-- iOS 12.0+
-- Swift 5.0+
-- SpriteKit
+* iOS 12.0+
+* Swift 5.0+
+* SpriteKit
 
 ## Installation
 
-### Swift Package Manager
+### Method 1: Swift Package Manager (Recommended)
 
 Add the following to your `Package.swift` file:
 
@@ -32,9 +38,24 @@ dependencies: [
 ```
 
 Or in Xcode:
+
 1. File → Add Package Dependencies...
-2. Enter the repository URL
+2. Enter the repository URL: `https://github.com/MitrofD/AnalogJoystick.git`
 3. Select version and add to your target
+
+### Method 2: Manual Installation
+
+If you prefer to manually add the files to your project:
+
+1. Download or clone this repository
+2. Copy the `Sources/AnalogJoystick` folder into your project
+3. Make sure the files are added to your target
+
+The package contains:
+- `AnalogJoystick.swift` - Main joystick component
+- `AnalogJoystickComponent.swift` - Visual components (base and handle)
+- `AnalogJoystickData.swift` - Data structures
+- `AnalogJoystickHiddenArea.swift` - Hidden area for dynamic positioning
 
 ## Usage
 
@@ -178,7 +199,7 @@ joystick.disabled = true
 ### AnalogJoystick
 
 | Property | Type | Description |
-|----------|------|-------------|
+| --- | --- | --- |
 | `velocity` | `CGPoint` | Normalized velocity (-1 to 1) on both axes |
 | `angular` | `CGFloat` | Angle in radians |
 | `tracking` | `Bool` | Whether joystick is currently being touched |
